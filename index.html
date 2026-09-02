@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahlan Hasan Research | AI and the Crisis of Trust</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-200">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="w-3 h-3 bg-indigo-600 rounded-full animate-pulse"></span>
+                <a href="#" class="font-bold text-xl tracking-tight text-indigo-600 dark:text-indigo-400">Sahlan Hasan Research</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#abstract" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">Abstract</a>
+                <a href="#paper" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">Read Paper</a>
+                <a href="#references" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">References</a>
+                <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            
+            <!-- Sidebar Navigation / Metadata -->
+            <aside class="lg:col-span-1 space-y-8">
+                <div class="sticky top-24 space-y-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Publication Details</h3>
+                        <div>
+                            <p class="text-xs text-slate-500">Author</p>
+                            <p class="font-semibold text-slate-800 dark:text-slate-200">Sahlan Hasan</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500">Document Type</p>
+                            <p class="font-semibold text-slate-800 dark:text-slate-200">Research Essay</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500">Focus Areas</p>
+                            <div class="flex flex-wrap gap-1 mt-1">
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">AI Safety</span>
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">Deepfakes</span>
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">Digital Trust</span>
+                            </div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 dark:border-slate-800">
+                            <button onclick="toggleBibtex()" class="w-full py-2 px-4 text-xs font-medium bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition text-center block">
+                                <i class="fa-solid fa-quote-right mr-2"></i> Cite Paper
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Table of Contents Sidebar -->
+                    <div class="hidden lg:block p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Contents</h3>
+                        <nav class="space-y-1 max-h-[50vh] overflow-y-auto text-xs pr-2">
+                            <a href="#abstract" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">Abstract</a>
+                            <a href="#sec-1" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">1. Introduction</a>
+                            <a href="#sec-2" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">2. Synthetic Media & AI Overview</a>
+                            <a href="#sec-3" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">3. Scale, Realism, and Speed</a>
+                            <a href="#sec-4" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">4. Impact on Political Processes</a>
+                            <a href="#sec-5" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">5. Security Risks</a>
+                            <a href="#sec-6" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">6. Journalism & Evidence</a>
+                            <a href="#sec-7" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">7. Detecting AI Content</a>
+                            <a href="#sec-8" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">8. Provenance</a>
+                            <a href="#sec-9" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">9. Social Media Platforms</a>
+                            <a href="#sec-10" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">10. Government Regulation</a>
+                            <a href="#sec-11" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">11. Copyright & Training Data</a>
+                            <a href="#sec-12" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">12. Psychological Problem</a>
+                            <a href="#sec-13" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">13. Environmental Cost</a>
+                            <a href="#sec-14" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">14. Multi-Layered Defense</a>
+                            <a href="#sec-15" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">15. What Users Can Do</a>
+                            <a href="#sec-16" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">16. Tech Companies' Role</a>
+                            <a href="#sec-17" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">17. International Cooperation</a>
+                            <a href="#sec-18" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">18. Proposed Framework</a>
+                            <a href="#sec-19" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">19. Future Research</a>
+                            <a href="#sec-20" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">20. Conclusion</a>
+                            <a href="#references" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">References</a>
+                        </nav>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="lg:col-span-3 space-y-12">
+
+                <!-- Header Title Banner -->
+                <header class="space-y-6 border-b border-slate-200 dark:border-slate-800 pb-10">
+                    <span class="px-3 py-1 text-xs font-semibold tracking-wider text-indigo-600 bg-indigo-100 dark:bg-indigo-950 dark:text-indigo-300 rounded-full uppercase">Academic Essay</span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif leading-tight tracking-tight text-slate-900 dark:text-white">
+                        Artificial Intelligence and the Crisis of Trust: Deepfakes, Misinformation, and Synthetic Media
+                    </h1>
+                    <div class="flex items-center space-x-4 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="font-medium text-slate-900 dark:text-slate-200">Sahlan Hasan</span>
+                    </div>
+                </header>
+
+                <!-- BibTeX Modal (Hidden by Default) -->
+                <div id="bibtexModal" class="hidden p-4 bg-slate-900 text-slate-200 rounded-xl font-mono text-xs overflow-x-auto relative border border-slate-800">
+                    <button onclick="toggleBibtex()" class="absolute top-2 right-2 text-slate-400 hover:text-white">✕</button>
+<pre>@article{hasan2026ai,
+  title={Artificial Intelligence and the Crisis of Trust: Deepfakes, Misinformation, and Synthetic Media},
+  author={Hasan, Sahlan},
+  year={2026}
+}</pre>
+                </div>
+
+                <!-- Abstract -->
+                <section id="abstract" class="p-8 bg-indigo-50/50 dark:bg-slate-900/60 rounded-2xl border border-indigo-100 dark:border-slate-800 space-y-4">
+                    <h2 class="text-xl font-bold font-serif text-indigo-900 dark:text-indigo-300 flex items-center">
+                        <i class="fa-solid fa-bookmark mr-3 text-indigo-600"></i> Abstract
+                    </h2>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        Artificial intelligence (Al) democratization has occurred in recent years, enabling individuals to harness the power of text or code generation. Such technology has created opportunities with tremendous positive impact, but it has also introduced challenges and concerns linked to the creation of synthetic information and deepfakes. Generative Al can create misinformation and thus damage reputation, distort politics, jeopardize reporting and journalistic integrity, facilitate unlawful financial gains, and undermine digital trust. While age-old concerns have long been focused on lies, falsified evidence, and reputational damage, Al significantly decreases the time, cost, and skill required to create convincing audio, video, and text.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        This paper explores the implications of Al-generated misinformation and deepfakes in public trust and, by extension, on politics, journalism, personal safety, and financial stability. It considers the challenges associated with detecting synthetic content, detecting technology's limitations in addressing the harms of deepfakes, and possible actions by governments, platforms, journalists, researchers, and the public. The paper argues that while a number of factors contribute to the deepfake and misinformation problems, an effective solution requires technical, regulatory, and societal approaches. These include detection and provenance tools, platform-level policies, regulation, user awareness, and liability for those who use Al to cause harm.
+                    </p>
+                    <div class="pt-4 border-t border-indigo-100 dark:border-slate-800 flex flex-wrap gap-2 text-xs">
+                        <span class="font-semibold text-slate-600 dark:text-slate-400">Keywords:</span>
+                        <span class="text-slate-600 dark:text-slate-300">artificial intelligence, generative Al, deepfakes, misinformation, disinformation, synthetic media, digital trust, Al safety, content provenance</span>
+                    </div>
+                </section>
+
+                <!-- Full Paper Content (Exact Verbatim Text) -->
+                <article id="paper" class="prose dark:prose-invert max-w-none font-serif text-slate-800 dark:text-slate-200 leading-relaxed space-y-10 text-lg">
+
+                    <!-- Section 1 -->
+                    <section id="sec-1" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">1. Introduction</h2>
+                        <p>Al is changing society's information-creation and -consumption landscape. The production of synthetic data and media is no longer the domain of those with extensive technical skills or access to sophisticated tools. Individuals may deploy chatbots to devise an image of an event that did not occur, clone a voice, or embed quotes within a speech by a public figure.</p>
+                        <p>Al is not an inherently negative force: it facilitates beneficial applications, such as enhanced productivity, richer creative expression, accessibility tools for people with disabilities, and new forms of entertainment. The concern is that Al enables individuals at scale to create and share misleading information faster than it can be detected and countered.</p>
+                        <p>It is important to distinguish between misinformation and disinformation. The former refers to information that is false or unsubstantiated and that is shared, despite the communicator's intentions, to deceive others. Disinformation, on the other hand, is information that is knowingly fabricated and disseminated with the intent to mislead or defraud. Al can generate both types of information. A person may share an Al-generated image without knowing that it is synthetic, whereas another person may use the same technology to defraud others deliberately.</p>
+                        <p>The public's trust in information has become a challenge even without the use of Al. People rely on technology to provide accurate information, including through social media, messaging and video platforms, search engines, and other Al-driven tools. Once information that has been generated by Al starts being disseminated, it becomes challenging to determine whether it is authentic or synthetic.</p>
+                        <p>The threat posed by misinformation and synthetic media and the response to it is a public-policy issue and not merely a technical one. Stanford's 2026 Al Index reports a total of 362 Al incidents in 2025, compared to 233 in 2024, with the responsible-Al ecosystem and measurement practices lagging far behind innovation in foundational models: [1]</p>
+                        <p>It is vital to appreciate the scale of the challenge of synthetic information. The core argument of this paper is that Al-generated misinformation and deepfakes present a crisis of trust beyond the threat posed by the fabrication of images and videos. The challenge goes beyond the authenticity of visuals to the credibility of evidence in general. The public's ability to distinguish between authentic and synthetic information will be undermined by the fact that authentic information may be dismissed as fakes and that misleading information may be presented as authentic. This dynamic will profoundly affect society's ability to deal with critical issues, notably electoral integrity and law enforcement.</p>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section id="sec-2" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">2. Synthetic Media and Al Overview</h2>
+                        <p>Al refers to a broad range of technologies that enables computers to perform tasks previously thought to require human intelligence. It encompasses language models, computer vision systems, and audio synthesis software, among others. Generative artificial intelligence (generative Al) is a specific type of Al that employs synthetic data to produce new content. It spans various content types, including text, images, audio, and video. A subset of generative Al is deepfake technology, which employs Al to create synthetic videos.</p>
+                        <p>While deepfake refers to a type of video, it is also used to indicate synthetic images, audio, and video. Deepfake technology has evolved considerably over time and is now capable of generating highly realistic content in real-time. While some deepfakes are relatively easy to detect, others are virtually indistinguishable from authentic content.</p>
+                        <p>Not all Al-generated content is a deepfake. Deepfake is a particular type of synthetic media that employs falsified imagery or video to mislead or defraud people. While Al can generate synthetic media, such content does not always involve deception or fraud. The term deepfake implies the use of such content for deceptive purposes.</p>
+                        <p>The Federal Bureau of Investigation (FBI) is particularly concerned with the use of generative Al to facilitate fraud and extortion. Its Internet Crime Complaint Center (IC3) has noted that generative Al presents unique challenges in detecting fraud because it reduces the time and effort required to commit such crimes while also minimizing the possibility of detection. [2]</p>
+                        <p>According to the IC3, Al can be used to create synthetic content with less effort and fewer detectable irregularities, making it a more appealing tool for fraudsters than traditional methods. The technology can also be used to create more convincing fraudulent messages, profile pictures, and other materials that impersonate real people. In other words, generative Al makes it easier to execute scams by reducing the workload and risk of getting caught.</p>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section id="sec-3" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">3. Scale, Realism, and Speed of Al Misinformation</h2>
+                        <p>There are three key factors that exacerbate the risks associated with Al-driven misinformation: scale, realism, and speed. First, generative Al can generate synthetic content at scale. One individual can produce hundreds or even thousands of articles or videos using Al, whereas it would take a team of people considerably longer to accomplish the same task. Second, Al-generated content is often realistic and challenging to detect, which increases the likelihood that it will reach a large audience. Third, Al can generate synthetic content much faster than traditional methods. This is important because the time it takes to debunk misinformation can be significantly longer than the time it takes to produce it.</p>
+                        <p>It is not enough to be able to detect Al-generated content; society must also ensure that such information is not widely disseminated. The issue is that the production of misleading information is becoming faster than its detection and correction. Al can create highly realistic images, videos, and text with minimal effort. It only takes a few seconds to produce a fake photo, but days or even weeks to verify that it is authentic.</p>
+                        <p>According to the Stanford 2026 Al Index, 233 Al-related incidents were recorded in 2024, compared to 146 in 2023, an increase of 56.4% year-over-year. [3] Meanwhile, the 2026 Index recorded 362 Al incidents in 2025. [1] The data illustrates the rate at which Al-related security incidents are escalating.</p>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section id="sec-4" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">4. Impact on Political Processes and Democratic Discourse</h2>
+                        <p>Political processes are particularly vulnerable to the dangers of Al-generated synthetic media and misinformation. Elections are based on the assumption that voters will have access to reliable information about candidates and the issues. Voters do not always agree on what constitutes the truth, but they must be able to rely on trustworthy sources to verify facts and determine what occurred. Synthetic media and Al-generated misinformation undermine this critical foundation in a number of ways.</p>
+                        <p>First, Al-generated misinformation can make it more difficult for voters to obtain accurate information about candidates and the issues. For example, an Al-generated deepfake may depict a candidate saying something that he or she did not say, thereby providing voters with misleading information. The same is true for Al-generated images, which may depict a candidate at a rally that did not occur. Second, fake videos from deepfake technology may be disseminated at a crucial moment in an election campaign, preventing journalists and researchers from being able to fact-check or respond quickly enough. The timing of the release of synthetic information is critical, as the later it is in the electoral cycle, the more challenging it is to respond to it.</p>
+                        <p>Governments and supranational organizations such as UNESCO are beginning to recognize the threat posed by deepfakes in electoral integrity. According to the Stanford 2026 Al Index, 24 US states had adopted deepfake legislation as of 2024, with several implementing restrictions on election-related deepfakes. [4] UNESCO has expressed concerns about the impact of synthetic media on democratic discourse and electoral integrity, noting that deepfake technologies had already been used in elections and armed conflicts. It points to the fact that the competition between deepfake creators and detectors is an ongoing process in which both sides are constantly adapting their tactics. [5] In other words, detecting synthetic media is not a one-time endeavor; it is an iterative process that requires continuous improvements in detection technologies.</p>
+                    </section>
+
+                    <!-- Section 5 -->
+                    <section id="sec-5" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">5. Money Misappropriation and Personal Security Risks</h2>
+                        <p>Beyond the disruption of political processes and democratic discourse, Al-generated misinformation poses significant financial and personal security challenges. Generative Al can facilitate financial fraud and extortion, with deepfake technology being particularly useful in impersonating individuals. Al can generate phone calls that sound like a relative, coworker, or even a manager, requesting that a victim transfer funds to a fraudulent account. Synthetic media can also aid fraudsters in creating counterfeit documents and identities that appear authentic. The FBI has warned that generative Al technologies can enhance traditional fraud techniques by making them more credible and difficult to detect. [2]</p>
+                        <p>Cybersecurity is typically concerned with protecting data and information technology infrastructure. However, Al-generated misinformation threatens personal security in a different way: by undermining human judgment. Generative Al can create convincing fake videos that can trick individuals into disclosing confidential information or transferring money to extortionists. For example, employees may be coerced into making unauthorized financial transfers after receiving threatening video messages from the company's chief financial officer (CFO). In the past, it may have been relatively simple to verify the authenticity of such a message by analyzing the voice and appearance of the CFO. However, with the rise of deepfake technology, such safeguards are no longer sufficient.</p>
+                        <p>Organizations must rethink their cybersecurity strategies to account for the threat posed by Al-generated misinformation. The ability to recognize familiar voices and faces can no longer be the primary method of authentication. Instead, companies should invest in additional measures, such as requiring employees to confirm sensitive requests through alternative communication channels.</p>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section id="sec-6" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">6. Impact on Journalism and Evidence Integrity</h2>
+                        <p>Journalism is a key institution in democratic societies, as it helps to ensure that the public has access to reliable information about the world. However, the rise of Al-generated misinformation threatens to undermine journalism's ability to provide such information. Misinformation can prevent journalists from being able to report the news accurately, and the public's belief in news outlets may be damaged if it is exposed to Al-generated content.</p>
+                        <p>News outlets typically rely on evidence such as photos, video, eyewitnesses, and documents to confirm facts and report the news. Al-generated misinformation poses twin challenges to news organizations: the danger of incorporating false information and the risk of declining public trust in news outlets due to the prevalence of fake information. One of the most insidious aspects of Al-generated misinformation is that it can motivate people to believe that authentic information is fabricated.</p>
+                        <p>Researchers refer to this danger as the "liar's dividend." The "liar's dividend" suggests that individuals and organizations can exploit the existence of Al-generated misinformation to promote their own interests by casting doubt on authentic information. The risk is particularly acute for news outlets that may struggle to distinguish between authentic and Al-generated content. For example, a news organization may publish an article based on a deepfake video, only to later discover that it was not authentic. The damage to its credibility would be severe.</p>
+                        <p>The challenge posed by Al-generated misinformation is that it is not enough to be able to detect it; society must also be able to distinguish between authentic and fake information effectively. The danger is twofold: that synthetic media will lead people to believe in false information and that authentic information will be dismissed as synthetic media. In other words, the issue is not simply detecting Al-generated misinformation; it is ensuring that people can trust authentic information. It is no longer enough to ask whether information is real or fake; it is necessary to ensure that information comes from credible sources.</p>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section id="sec-7" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">7. Detecting Al-Generated Misinformation</h2>
+                        <p>The most obvious way to address the threat posed by Al-generated misinformation is to develop better detection tools. Such technology can help identify synthetic content so that it can be removed from circulation and countered with authentic information. Detecting Al-generated misinformation is technically challenging, however, and detection tools are often limited in their ability to identify such content.</p>
+                        <p>The National Institute of Standards and Technology (NIST) has explored detection and other approaches to countering Al-generated misinformation. A 2024 NIST publication examined the technical aspects of synthetic media governance, including "authentication and provenance, watermarking and labeling, detection and blocking of specific harmful content, and testing and auditing methods for ongoing model maintenance." [6] The publication highlights the need for multiple approaches to countering Al-generated misinformation.</p>
+                        <p>Detection technology is not a complete solution to the problem of Al-generated misinformation. There are several reasons why detection technology cannot be relied on to address the challenges posed by Al-generated misinformation. First, detection tools can produce false positives: information that is identified as Al-generated when, in fact, it is authentic. False positives can cause authentic information to be dismissed as synthetic media, which could have serious implications for journalism, research, education, and other fields that rely on accurate information.</p>
+                        <p>NIST's research findings on generative Al illustrate the limitations of detection technology. NIST's 2024 Generative Artificial Intelligence (GenAl) Pilot Study found that different detectors have varying degrees of accuracy in detecting information produced by different Al models. In other words, some detection tools are better at detecting information generated by certain Al models than others. [7] This means that detection technology is not a reliable solution to the problem of Al-generated misinformation.</p>
+                    </section>
+
+                    <!-- Section 8 -->
+                    <section id="sec-8" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">8. Provenance: An Alternative Approach to Ensuring Trust in Information</h2>
+                        <p>Another way to address the threat posed by Al-generated misinformation is to ensure that information comes from trustworthy sources. This is commonly referred to as the "provenance" of information. Provenance describes the origin of information, including the technology and processes used to generate it. The importance of provenance has been recognized by the Coalition for Content Provenance and Authenticity (C2PA), which has developed technical standards for ensuring trust in information. According to the C2PA website, its Content Credentials technology enables "cryptographic verification of provenance," which allows people to assess the authenticity of information. [8]</p>
+                        <p>The C2PA approach to provenance involves applying cryptographic binding to files to ensure that they have not been altered. The C2PA specifications state that this technology can be used to "assert provenance information about a file and cryptographically bind that information to the file in order to protect integrity and enable trustworthiness assessment." [9] In other words, the C2PA approach to provenance makes it possible to verify that information has not been altered by comparing the information contained in a file to its digital fingerprint.</p>
+                        <p>Provenance can help people distinguish between authentic and Al-generated information. It is an alternative to detection technology in countering Al-generated misinformation and can complement it. The advantage of provenance is that it can help people assess the reliability of information. Whereas detection tools are typically designed to identify Al-generated information, provenance can help people determine whether information is trustworthy.</p>
+                        <p>Provenance is not a complete solution to the problem of Al-generated misinformation. First, it is necessary to have information that has a trustworthy source in the first place. The integrity of information depends on the authenticity of the source. In other words, information that has been generated by Al can be trustworthy if it comes from a reliable source. Second, many pieces of information that circulate on the internet do not have provenance. Older information, screenshots, and screen recordings of information created by others typically do not have provenance information attached to them. Moreover, it is possible for individuals to create information with no provenance.</p>
+                    </section>
+
+                    <!-- Section 9 -->
+                    <section id="sec-9" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">9. The Role of Social Media Platforms</h2>
+                        <p>Social media platforms play a critical role in the spread of misinformation and need to take responsibility for countering it. Synthetic media typically only becomes a problem once it has been disseminated widely. A fake image that is only seen by one person is not nearly as dangerous as one that has been widely shared and gone viral. This highlights the importance of social media platforms in ensuring that Al-generated misinformation does not go viral. Platforms can also play a role in countering Al-generated misinformation by detecting it and taking appropriate action.</p>
+                        <p>Social media platforms can adopt measures to limit the spread of Al-generated misinformation. Some measures involve labeling Al-generated information appropriately so that it can be easily identified. Others relate to preserving provenance information so that it can be used to assess the authenticity of information. In addition, platforms can encourage users to report Al-generated misinformation so that it can be removed from the platform. It is important that platforms respond to Al-generated misinformation in a way that balances the need to limit its spread with the need to ensure freedom of speech.</p>
+                        <p>Most obviously, platforms can take steps to limit the visibility of Al-generated misinformation. They can penalize accounts that repeatedly share such information, for example, by removing posts or banning users. It is important, however, for platforms to recognize that not all Al-generated information is inherently deceptive or inappropriate for their services. In particular, some Al-generated information takes the form of satire, parody, or other legitimate speech that should be protected.</p>
+                        <p>A more promising approach is for platforms to establish policies that take into consideration the intent and impact of Al-generated misinformation. In other words, platforms can distinguish between deceptive information that should be penalized and information that is intended to be harmless but has nevertheless gone viral. An important consideration is that Al-generated information that appears to be authentic can be extremely damaging if it is used to misrepresent a candidate or spread false information about an individual.</p>
+                    </section>
+
+                    <!-- Section 10 -->
+                    <section id="sec-10" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">10. Government Regulation and the EU AI Act</h2>
+                        <p>Government regulation can also play an important role in countering the threats posed by Al-generated misinformation. The EU AI Act is an important development, as it marks the first comprehensive attempt to regulate Al at the supranational level. The Act does not apply to all Al technologies; instead, it imposes specific requirements depending on the level and type of risk posed by a given technology. The EU AI Act covers a wide range of Al applications, including those related to deepfakes and misinformation.</p>
+                        <p>The EU AI Act also imposes requirements on providers of general-purpose Al models. This includes technical documentation and copyright policies, as well as summaries of training data, for foundation models. In addition, the Act imposes additional requirements, including risk management, incident reporting, and cybersecurity requirements, for general-purpose Al models that pose a systemic risk. The requirements for general-purpose Al providers became mandatory on August 2, 2025. [10]</p>
+                        <p>The EU AI Act is significant because it recognizes the threat posed by Al-generated misinformation and takes steps to address it. The Act will undoubtedly have a considerable impact on the way that large technology companies operate, as the regulation adds another layer of complexity to their operations. The EU AI Act reflects a growing trend among policymakers to impose stricter regulations on technology companies in order to ensure that they are held accountable for the harms caused by their products and services.</p>
+                        <p>At the same time, it is essential to recognize that regulation can be counterproductive if it fails to consider the nuances of the situation. Regulation that is too broad can penalize smaller companies disproportionately, as they may not have the resources to comply with the same requirements as larger multinational corporations. In other words, policymakers must be aware of the potential unintended consequences of regulation.</p>
+                    </section>
+
+                    <!-- Section 11 -->
+                    <section id="sec-11" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">11. The Training Data and Copyright Challenges</h2>
+                        <p>A significant challenge associated with foundation models is the issue of training data. Foundation models are typically trained on large data sets that contain text, images, art, video, music, and other types of content. The legality of using such data sets to train foundation models is often contested. In particular, it is unclear whether it is lawful for companies to use copyrighted material without the consent of copyright holders. Stanford's 2024 Al Index highlights the importance of addressing such copyright challenges, noting that language models can reproduce copyrighted material and that "the question of whether such outputs are infringing is a significant legal challenge." The report also notes the lack of transparency around foundational models, particularly with regard to their training data and methods. [11]</p>
+                        <p>The issues of copyright and transparency are closely linked to the challenge of combating Al-generated misinformation. In particular, the lack of transparency around foundational models is a major challenge for efforts to ensure the reliability of information. It is impossible to develop accurate detection and provenance technologies if companies are unable or unwilling to share information about the ways in which foundation models operate. The situation highlights the importance of encouraging openness and collaboration between different stakeholders in order to develop effective solutions.If nobody knows what a model was trained on or how it was constructed, it is significantly harder for researchers or users to evaluate what it is likely to get wrong or how it can be misused.</p>
+                        <p>The EU AI Act's requirement that general-purpose Al providers publish copyright policies or summaries of training data represents one approach to addressing this concern. [10] However, transparency of the sort is only valuable to the extent that it is substantive, and a vague mention of training on "publicly available data" does not provide much to evaluate.</p>
+                    </section>
+
+                    <!-- Section 12 -->
+                    <section id="sec-12" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">12. The Psychological Problem: People Aren't Perfect Information Processors</h2>
+                        <p>Technology is only half of the problem. Humans have their own issues with processing information.</p>
+                        <p>People often believe information that confirms their preconceptions, and emotional content is more easily shared than a reasoned, dry explanation. A shocking image will resonate with people far more easily than something carefully explained will, and with the rise of fake videos, a viral segment with ten million views in twelve hours has a much harder time being properly fact-checked by the next day.</p>
+                        <p>As a result, speed becomes paramount. Platforms, journalists, and institutions need to find ways to respond quickly without sacrificing accuracy.</p>
+                        <p>There is a subtler danger - "truth fatigue." People who regularly encounter fake content may become distrustful of everything online, real or not, and that blanket skepticism can be just as corrosive as uncritical belief. A society that trusts no one online is nearly as hard to govern as one that believes everyone.</p>
+                    </section>
+
+                    <!-- Section 13 -->
+                    <section id="sec-13" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">13. The Environmental Cost of Expanding Al</h2>
+                        <p>There is another Al-fueled threat that parallels misinformation in its risk profile and is potentially far greater in scope: energy.</p>
+                        <p>Large Al systems operate on computer clusters, and those clusters use electricity for both computation and cooling. The International Energy Agency's estimates for global data-center electricity use peaked at 460 terawatt-hours in 2024, and would exceed 1,000 TWh by 2030 in the International Energy Agency's baseline scenario. [12]</p>
+                        <p>More recently, the International Energy Agency's analysis has shown that global data-center electricity demand increased by 17% in 2025, with Al-specific data centers far outpacing the average. [13]</p>
+                        <p>That does not mean that every Al query has a substantial environmental cost, since the International Energy Agency notes that energy use per task is dropping rapidly as hardware and software improve, [13] but rising overall demand and new applications can easily swallow those gains whole.</p>
+                        <p>It is a valuable lesson in Al governance - while making a single component more efficient reduces the risk of a systemic issue, it will rarely eliminate the risk entirely, especially if the number of those components rises drastically.</p>
+                    </section>
+
+                    <!-- Section 14 -->
+                    <section id="sec-14" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">14. Why There's No One Technology or Law That Solves This</h2>
+                        <p>With all of the above in mind, it should come as no surprise that nobody has a single technology or law that addresses the issue on its own.</p>
+                        <p>Improved detectors help, but have obvious failure modes. Watermarking helps, but can often be removed. Provenance helps, but may not be available for older content. Regulation helps, but is often challenging to enforce. Platform moderation helps, but can be done poorly or slowly. Media literacy helps, but people often believe misinformation anyway. Human fact-checkers help, but they can be deceived.</p>
+                        <p>The reality is multi-layered defense: prevention, provenance, detection, verification, and accountability, each of which has its flaws:</p>
+                        <ol class="list-decimal pl-6 space-y-2">
+                            <li><strong>Prevention:</strong> Developers should build safeguards into systems from the start.</li>
+                            <li><strong>Provenance:</strong> Digital media should carry verifiable origin information.</li>
+                            <li><strong>Detection:</strong> Automated systems should label manipulated content.</li>
+                            <li><strong>Verification:</strong> Journalists, institutions, and users should independently double-check claims.</li>
+                            <li><strong>Accountability:</strong> Those who deliberately use Al to cause harm should suffer real-world consequences.</li>
+                        </ol>
+                        <p>None is perfect or sufficient on its own, but together, they reduce the likelihood and cost of a harmful use of Al.</p>
+                    </section>
+
+                    <!-- Section 15 -->
+                    <section id="sec-15" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">15. What Ordinary Users Can Do</h2>
+                        <p>Everyday users have value to play as well, and it's not necessary to become an Al expert to take part. It helps to avoid the instinct to immediately share a surprising finding - that is precisely the psychological pressure that misinformation hopes to trigger. It helps to check important claims against multiple independent sources, and to be especially wary of content that depicts a public figure saying something surprising or extreme. It helps to ask yourself whether an image actually depicts what its caption says, and realize that a genuine photo can be put into a misleading context just as easily as a fake one can be.</p>
+                        <p>Realism is not proof of authenticity, since an Al-generated piece of media may look completely convincing, but assuming that anything unusual must be Al-generated is just as unhelpful. The goal is not to approach everything with suspicion, but to develop habits that reduce the risk of believing something false.</p>
+                    </section>
+
+                    <!-- Section 16 -->
+                    <section id="sec-16" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">16. What Technology Companies Should Do</h2>
+                        <p>Al developers bear more responsibility than end-users, since they are the ones who enable everything else to happen.</p>
+                        <p>Companies should stress-test their products for foreseeable misuses, bolster safeguards accordingly, document known limitations, and collaborate with outside researchers instead of treating all information as proprietary.</p>
+                        <p>The EU framework already mandates model evaluation, risk assessments, incident reporting, and cybersecurity measures from general-purpose systems that pose systemic risks. [10]</p>
+                        <p>Outside of regulatory requirements, companies should provide users with information about a system's primary functions and limitations, whether it can generate realistic imagery, voices, or video, what safeguards are present, how users can report harmful output, and what is publicly known about its development. None of that requires sharing trade secrets, only allowing researchers, regulators, and users to actually evaluate the system's risks.</p>
+                    </section>
+
+                    <!-- Section 17 -->
+                    <section id="sec-17" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">17. The Importance of International Cooperation</h2>
+                        <p>Al-driven misinformation does not respect political borders, and a threat originating in one jurisdiction can target individuals in another, be hosted in a third, and published via a fourth.</p>
+                        <p>As a result, international cooperation is nearly essential in content provenance, evidence preservation, platform accountability, election security, fraud prevention, and mutual investigation.</p>
+                        <p>There is already progress - the Stanford 2025 Al Index indicates that Al mentions in legislative proceedings of major nations spiked sharply in 2024, suggesting that lawmakers are beginning to take the issue seriously. [4] But international cooperation on the issue is still in its infancy, and a patchwork of inconsistent rules leaves room for bad actors to exploit the gaps.</p>
+                    </section>
+
+                    <!-- Section 18 -->
+                    <section id="sec-18" class="space-y-6">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">18. A Proposed Framework for Reducing Al Misinformation</h2>
+                        <p>Putting the discussion together, a workable approach probably needs six components.</p>
+                        
+                        <div class="space-y-4 pl-4 border-l-2 border-indigo-500">
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">18.1 Mandatory disclosure for high-risk synthetic media</h3>
+                                <p>Disclosure should be mandatory when Al impersonates real people or presents fictional events as real, though it should be clear that not every piece of Al-generated content needs to have a flashing warning label. The level of disclosure should be appropriate to the likelihood that the media could mislead someone.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">18.2 Stronger content provenance</h3>
+                                <p>Standards such as C2PA should be built into cameras, editing software, Al systems, publishers, and social platforms by default, and should survive common transformations such as resizing or compression on a new platform without breaking.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">18.3 Independent testing</h3>
+                                <p>Al developers should not be the only entities evaluating their own safety practices - outside researchers should have access to testing systems.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">18.4 Faster incident reporting</h3>
+                                <p>Serious Al incidents should be reported in a manner that lets researchers identify patterns while they still occur, since the rising numbers from Stanford's studies are exactly the sort of signal that should be noted earlier. [1]</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">18.5 Media literacy education</h3>
+                                <p>Schools should teach students how to evaluate digital evidence, including reverse image searches, source validation, recognizing misleading context, and understanding the limits of synthetic information.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">18.6 Real accountability</h3>
+                                <p>There should be real-world consequences for individuals who use Al to commit fraud, impersonation, extortion, or other serious harms, while legitimate creative and research applications are not penalized.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 19 -->
+                    <section id="sec-19" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">19. Future Research</h2>
+                        <p>Several areas deserve further investigation.</p>
+                        <p>Multimodal detection - examining video, audio, imagery, and text simultaneously rather than individually - merits further study, as does improving the usability of provenance systems; nobody will use a standard that nobody implements. It is also important to understand the psychological impact of disclosure to users - a warning that users learn to ignore is not likely to be an effective safeguard. Al incident databases need to continue to be built so that researchers can identify which forms of misuse are growing fastest, and the economic scale of Al-assisted fraud deserves closer examination. There is a deeper question to be explored about the long-term effects on a society that grows used to distrusting digital evidence.</p>
+                        <p>The most important question, however, is probably not whether every fake piece of information can be caught, since that is unlikely to be practical. It is whether reliable evidence can be created more easily than false evidence.</p>
+                    </section>
+
+                    <!-- Section 20 -->
+                    <section id="sec-20" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">20. Conclusion</h2>
+                        <p>Al has created new opportunities, but has also transformed the economics of deception. Deepfakes and Al misinformation matter because they have significantly lowered the cost, time, and difficulty of creating convincing false content, with effects beyond social media that reach into elections, journalism, finances, reputation, cybersecurity, and overall societal trust. The data speaks for itself; Stanford's 2026 Al Index documented 362 Al incidents in 2025, compared to 233 in 2024. [1] The FBI has warned that criminals are using generative Al to scale financial fraud and improve its realism. [2] NIST has identified the importance of provenance, watermarking, labeling, detection, testing, and auditing in reducing risks posed by synthetic content. [6] Governments and international bodies are developing new regulatory and technical frameworks to address the issue.</p>
+                        <p>But it would be a mistake to assume that a sufficiently strong detector can solve the problem outright, since at its heart, this is a trust issue. People need reliable methods for knowing where information comes from, whether it has been modified, who is responsible, and whether independent evidence supports them, and technology cannot substitute entirely for social institutions and human judgement.</p>
+                        <p>The most promising approach is combining several factors - responsible Al development, content provenance, workable detection, platform accountability, government regulation, independent research, journalism, and education. None is particularly effective on its own.</p>
+                        <p>It is also important to avoid the temptation to treat Al as an existential threat; used responsibly, generative Al has many benefits, and the goal should not be to end synthetic media or halt Al development, but to make deception more difficult and accountability easier.</p>
+                        <p>Ultimately, the future of digital trust rests on the ability of society to adapt as quickly as Al is misused, since the ability to distinguish between genuine and fake recordings will determine whether modern society can function. If this challenge is not met, the damage will not be limited to individual fraud or viral hoaxes, but will extend to entire domains of human experience.</p>
+                        <p>That is why this is not a problem that only affects a single generation of Al models, but is a continuing technological, political, legal, and social challenge that will define future generations of Al - and the systems they build - for years to come.</p>
+                    </section>
+
+                    <!-- References -->
+                    <section id="references" class="space-y-4 pt-6 border-t-2 border-slate-200 dark:border-slate-800">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-slate-900 dark:text-slate-100">References</h2>
+                        <ol class="list-decimal pl-6 space-y-2 text-sm text-slate-600 dark:text-slate-400 font-sans">
+                            <li>Stanford Institute for Human-Centered Artificial Intelligence. (2026). Al Index Report 2026: Responsible Al. Stanford University.</li>
+                            <li>Federal Bureau of Investigation, Internet Crime Complaint Center. (2024). Criminals Use Generative Artificial Intelligence to Facilitate Financial Fraud. December 3, 2024.</li>
+                            <li>Stanford Institute for Human-Centered Artificial Intelligence. (2025). Al Index Report 2025: Responsible Al. Stanford University.</li>
+                            <li>Stanford Institute for Human-Centered Artificial Intelligence. (2025). Al Index Report 2025: Policy and Governance. Stanford University.</li>
+                            <li>UNESCO. (2025). Mapping the Information Integrity Debate. UNESCO/G20-related information integrity materials.</li>
+                            <li>Chandra, B., Dunietz, J., Roberts, K., Lee, Y., Fontana, P., & Awad, G. (2024). Reducing Risks Posed by Synthetic Content: An Overview of Technical Approaches to Digital Content Transparency. NIST AI 100-4. National Institute of Standards and Technology.</li>
+                            <li>Iyer, H., Seo, S., Diduch, L., Peterson, K., Awad, G., & Lee, Y. (2025). 2024 NIST GenAl Pilot Study: Text-to-Text Evaluation Overview and Results. NIST Al 700-1. National Institute of Standards and Technology.</li>
+                            <li>Coalition for Content Provenance and Authenticity. (2026). C2PA Specifications.</li>
+                            <li>Coalition for Content Provenance and Authenticity. (2026). Content Credentials Specification. C2PA Technical Specifications.</li>
+                            <li>European Commission. (2026). Guidelines on Obligations for General-Purpose Al Providers under the EU Al Act. European Commission, Directorate-General for Communications Networks, Content and Technology.</li>
+                            <li>Stanford Institute for Human-Centered Artificial Intelligence. (2024). Al Index Report 2024: Responsible Al. Stanford University.</li>
+                            <li>International Energy Agency. (2025). Energy and Al. International Energy Agency, Paris.</li>
+                            <li>International Energy Agency. (2026). Key Questions on Energy and Al. International Energy Agency, Paris.</li>
+                        </ol>
+                    </section>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mt-20 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Sahlan Hasan Research. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Script
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // BibTeX Toggle
+        function toggleBibtex() {
+            const modal = document.getElementById('bibtexModal');
+            modal.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
