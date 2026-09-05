@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahlan Hasan Research | Artificial General Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-200">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="w-3 h-3 bg-indigo-600 rounded-full animate-pulse"></span>
+                <a href="index.html" class="font-bold text-xl tracking-tight text-indigo-600 dark:text-indigo-400">Sahlan Hasan Research</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="index.html" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition"><i class="fa-solid fa-arrow-left mr-1"></i>All Papers</a>
+                <a href="#abstract" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">Abstract</a>
+                <a href="#paper" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">Read Paper</a>
+                <a href="#references" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">References</a>
+                <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+            <!-- Sidebar Navigation / Metadata -->
+            <aside class="lg:col-span-1 space-y-8">
+                <div class="sticky top-24 space-y-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Publication Details</h3>
+                        <div>
+                            <p class="text-xs text-slate-500">Author</p>
+                            <p class="font-semibold text-slate-800 dark:text-slate-200">Sahlan Hasan</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500">Document Type</p>
+                            <p class="font-semibold text-slate-800 dark:text-slate-200">Research Essay</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500">Focus Areas</p>
+                            <div class="flex flex-wrap gap-1 mt-1">
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">AGI</span>
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">Foundation Models</span>
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">AI Safety</span>
+                            </div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 dark:border-slate-800">
+                            <button onclick="toggleBibtex()" class="w-full py-2 px-4 text-xs font-medium bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition text-center block">
+                                <i class="fa-solid fa-quote-right mr-2"></i> Cite Paper
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Table of Contents Sidebar -->
+                    <div class="hidden lg:block p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Contents</h3>
+                        <nav class="space-y-1 max-h-[50vh] overflow-y-auto text-xs pr-2">
+                            <a href="#abstract" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">Abstract</a>
+                            <a href="#sec-1" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">1. Introduction</a>
+                            <a href="#sec-2" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">2. What Is AGI?</a>
+                            <a href="#sec-3" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">3. Intellectual Origins</a>
+                            <a href="#sec-4" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">4. Why Modern AI Looks More General</a>
+                            <a href="#sec-5" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">5. Core Capabilities Required</a>
+                            <a href="#sec-6" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">6. Intelligence vs. Benchmarks</a>
+                            <a href="#sec-7" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">7. Is AGI Already Here?</a>
+                            <a href="#sec-8" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">8. The "Jagged Intelligence" Problem</a>
+                            <a href="#sec-9" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">9. Technical Paths Toward AGI</a>
+                            <a href="#sec-10" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">10. Robotics and Embodiment</a>
+                            <a href="#sec-11" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">11. AGI and Scientific Discovery</a>
+                            <a href="#sec-12" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">12. Economic Implications</a>
+                            <a href="#sec-13" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">13. Safety and Alignment</a>
+                            <a href="#sec-14" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">14. Governance & Power</a>
+                            <a href="#sec-15" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">15. Why AGI Is Difficult</a>
+                            <a href="#sec-16" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">16. A Scientific Definition</a>
+                            <a href="#sec-17" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">17. Future of AGI Research</a>
+                            <a href="#sec-18" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">18. Conclusion</a>
+                            <a href="#references" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">References</a>
+                        </nav>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="lg:col-span-3 space-y-12">
+
+                <!-- Header Title Banner -->
+                <header class="space-y-6 border-b border-slate-200 dark:border-slate-800 pb-10">
+                    <span class="px-3 py-1 text-xs font-semibold tracking-wider text-indigo-600 bg-indigo-100 dark:bg-indigo-950 dark:text-indigo-300 rounded-full uppercase">Academic Essay</span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif leading-tight tracking-tight text-slate-900 dark:text-white">
+                        Artificial General Intelligence: Definitions, Foundations, Current Progress, Challenges, and the Road to General Machine Intelligence
+                    </h1>
+                    <div class="flex items-center space-x-4 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="font-medium text-slate-900 dark:text-slate-200">Sahlan Hasan</span>
+                    </div>
+                </header>
+
+                <!-- BibTeX Modal (Hidden by Default) -->
+                <div id="bibtexModal" class="hidden p-4 bg-slate-900 text-slate-200 rounded-xl font-mono text-xs overflow-x-auto relative border border-slate-800">
+                    <button onclick="toggleBibtex()" class="absolute top-2 right-2 text-slate-400 hover:text-white">✕</button>
+<pre>@article{hasan2026agi,
+  title={Artificial General Intelligence: Definitions, Foundations, Current Progress, Challenges, and the Road to General Machine Intelligence},
+  author={Hasan, Sahlan},
+  year={2026}
+}</pre>
+                </div>
+
+                <!-- Abstract -->
+                <section id="abstract" class="p-8 bg-indigo-50/50 dark:bg-slate-900/60 rounded-2xl border border-indigo-100 dark:border-slate-800 space-y-4">
+                    <h2 class="text-xl font-bold font-serif text-indigo-900 dark:text-indigo-300 flex items-center">
+                        <i class="fa-solid fa-bookmark mr-3 text-indigo-600"></i> Abstract
+                    </h2>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        Artificial General Intelligence (AGI) is one of the most hyped and controversial concepts in modern artificial intelligence. Unlike narrow AI systems that are designed to perform a specific set of cognitive tasks, AGI is generally defined as a type of artificial intelligence with a generalized ability to perform intellectual tasks with human-level flexibility and skill. At the same time, there is currently no scientific consensus on what AGI is and how AGI can be recognized. Some researchers focus on AGI's generality and reasoning, others emphasize autonomy and learning, while still others highlight adaptability, performance breadth, and other capabilities.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        The intellectual history of AGI began in the era of early computers when Alan Turing asked himself if machines can think and proposed the now famous imitation game as a way to evaluate this hypothetical ability. The field of AI itself was formalized at the Dartmouth conference in 1956. In the decades that followed, researchers developed early symbolic reasoning systems, expert systems, statistical machine learning, artificial neural networks, and deep learning algorithms. The advent of large-scale foundation models and the transformer architecture in 2017 marked the latest major milestone in the development of artificial intelligence. The research community is now witnessing an explosion of studies focused on training truly general AI assistants that can operate across language, vision, coding, math, research, and other domains and interact with computers in increasingly autonomous ways.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        While the evidence of rapid progress toward machines with broad intellectual capabilities is overwhelming, the question of whether AGI has already been achieved does not have a positive answer. The 2026 AI index reports that frontier language models have already exceeded human performance on some difficult benchmarks while performing inconsistently on much simpler tasks. AI systems have made remarkable progress in performing specific computer tasks, but they remain unreliable in their ability to perform even basic home tasks. These trends illustrate the fact that modern AI systems have impressive domain-specific capabilities, but their performance is generally not general.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        This paper aims to provide an overview of what AGI is, why it is so challenging to define AGI, how modern AI systems have evolved toward general intelligence, what capabilities AGI would require, how AGI can be benchmarked, what technical challenges still exist, and what social, economic, and safety impacts AGI would bring. The paper argues that AGI should not be conceptualized as a singular binary metric but should instead be evaluated in terms of multiple dimensions, including breadth, depth, adaptability, reliability, autonomy, embodiment, memory, and learning efficiency. Under this framework, the development of AGI can be seen as a multidisciplinary research endeavor with specific technical and societal challenges rather than an existential risk from unpredictable AI outcomes.
+                    </p>
+                    <div class="pt-4 border-t border-indigo-100 dark:border-slate-800 flex flex-wrap gap-2 text-xs">
+                        <span class="font-semibold text-slate-600 dark:text-slate-400">Keywords:</span>
+                        <span class="text-slate-600 dark:text-slate-300">Artificial General Intelligence; AGI; artificial intelligence; machine learning; foundation models; reasoning; autonomy; AI safety; robotics; general intelligence;</span>
+                    </div>
+                </section>
+
+                <!-- Full Paper Content (Exact Verbatim Text) -->
+                <article id="paper" class="prose dark:prose-invert max-w-none font-serif text-slate-800 dark:text-slate-200 leading-relaxed space-y-10 text-lg">
+
+                    <!-- Section 1 -->
+                    <section id="sec-1" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">1. Introduction</h2>
+                        <p>Modern AI systems have gone from narrow, task-specific tools to powerful systems that can operate across domains. Today's AI systems can generate text, write computer code, perform mathematical calculations, create scientific ideas, operate computers and robots, and help humans in their professional activities. This has fueled growing speculation about whether it is possible for a machine to achieve a level of intelligence that is qualitatively higher than the intelligence of humans who are limited to a specific area of expertise.</p>
+                        <p>Artificial General Intelligence, or AGI, is the name of this putative type of intelligence. The concept of AGI is widely used but not clearly defined. For example, OpenAI's website defines AGI as "highly autonomous systems that perform substantially better than humans in almost all economically useful spheres." Another approach is reflected in the 2024 Google DeepMind framework, which focuses on the dual challenge of achieving both breadth and depth of cognitive abilities while also introducing the concept of autonomy as an independent dimension. A 2025 research agenda by Dan Hendrycks and his collaborators highlights the importance of defining AGI in terms of the cognitive versatility and proficiency of an educated adult and highlights various domains of human intelligence.</p>
+                        <p>These differences are not just semantic: the choice of definition directly impacts the choice of methods and measurements. A system that performs intellectual tasks faster than a human but makes frequent mistakes will have different implications than a system that has narrowly focused skills but reliably performs them. A system that can perform multiple types of tasks but requires extensive human supervision after each cycle will have different implications for society than a fully autonomous but narrowly focused system. Whether these systems should be categorized as AGI is a question that can only be answered when specific definitions are provided.</p>
+                        <p>It is also important to recognize that AGI is a dynamic concept because the capabilities of AI systems are changing rapidly. As the Stanford 2026 AI index shows, frontier model performance continued to increase in 2025, with many domains witnessing accelerating progress. At the same time, the report notes that benchmarks themselves are becoming less useful indicators of progress because progress within one particular task can saturate rapidly. The index also highlights the growing capabilities of frontier models in such areas as reasoning, coding, agentic computer use, and scientific discovery. On the other hand, the same report notes the tendency of models to exhibit surprising limitations on seemingly simple tasks. Thus, AGI should be viewed as a multidimensional research topic that encompasses multiple aspects of intelligence, including learning, reasoning, memory, perception, planning, autonomy, social intelligence, and adaptability.</p>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section id="sec-2" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">2. What Is Artificial General Intelligence?</h2>
+                        <p>The discussion of what constitutes AGI should begin with a clear distinction between narrow and general artificial intelligence. According to the OECD definition, AI is a machine-based system that operates by inferring from inputs how to act or respond in order to produce an output such as predictions, content, recommendations, or decisions that influence the environment. The OECD definition highlights the wide diversity of AI systems by noting that they can vary in autonomy and adaptability after deployment.</p>
+                        <p>This definition includes all types of AI systems, including recommendation algorithms, computer vision systems, self-driving cars, and large language models. General artificial intelligence, by contrast, has the ability to perform intellectual tasks more broadly than any specific narrow AI system. One way to characterize AGI is to examine the features that would allow a machine to perform intellectual tasks more generally than any specific narrow AI system currently available. An AGI system would need to have a broad capability profile, spanning multiple intellectual domains, and would need to have some level of adaptability to handle tasks outside of its training distribution. It would need to be able to learn new skills and transfer knowledge from one domain to another. It would need to possess reasoning and planning capabilities that go beyond pattern matching. An AGI system would need to be reliable in its performance and would need to have long-term memory capabilities.</p>
+                        <p>The AI system would need to operate autonomously to the extent that it could formulate plans and carry them out. These capabilities will enable such a system to perform intellectual tasks across multiple domains, exhibit adaptability in its behavior, display reliability in its performance, use prior experiences to improve its performance, and operate without human supervision.</p>
+                        <p>The framework suggested by Google DeepMind researchers Levels of AGI for Operationalizing Progress on the Path to AGI can serve as a starting point for evaluating the intellectual capabilities of an AGI system. This framework emphasizes the need to consider both the breadth and depth of capabilities when defining AGI. Another important aspect of this framework is the distinction between capability and autonomy: the ability to operate independently is an important characteristic, but it should be separated from the system's cognitive abilities.</p>
+                        <p>This distinction is critical because it recognizes that systems that can perform complex tasks but cannot act independently are fundamentally different from systems that can perform these same tasks while operating independently. Thus, while an AGI system would need to have high levels of capability, its autonomy should be considered separately.</p>
+                        <p>With this in mind, it is possible to conclude that AGI is a multidimensional concept that needs to account for multiple variables, including cognitive breadth, cognitive depth, adaptability, reliability, autonomy, embodiment, memory, and learning efficiency. This perspective transforms the question of AGI from an existential binary ("is or is not AGI") to a multidisciplinary research topic that involves researchers in a variety of fields.</p>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section id="sec-3" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">3. The Intellectual Origins of AGI</h2>
+                        <p>The modern quest for AGI began in the 1950s, well before the term AGI itself was coined. In his 1950 essay Computing Machinery and Intelligence, published in the journal Mind, Alan Turing proposed the famous Turing test as a way to determine whether a computer can think. The Turing test asks how well a computer can mimic human conversation: if a human judge cannot distinguish a computer from a human, the computer can be said to think. While Turing's approach does not fully capture the modern understanding of AGI, it nevertheless reflects the early idea that thinking is a valuable quality that should be attributed to computers that demonstrate human-like competencies.</p>
+                        <p>The field of artificial intelligence was born in 1956 at the Dartmouth Conference, which brought together scientists who believed that machines could be programmed to exhibit intelligent behavior. In the decades that followed, researchers created the first AI systems that used logic and rules to solve specific types of problems. These early systems were relatively simple and were quickly surpassed by machine learning algorithms that could improve their performance based on exposure to large amounts of data.</p>
+                        <p>Systems that use artificial neural networks have demonstrated remarkable proficiency in solving perceptual tasks such as image and speech recognition. The 2012 breakthrough by Krizhevsky, Sutskever, and Hinton demonstrated the power of convolutional neural networks when applied to the ImageNet data set. Their model contained 60 million parameters and achieved significantly better performance on the ImageNet challenge than previous approaches. This model, along with related innovations in neural networks, has since led to the rise of modern deep learning.</p>
+                        <p>The next major step toward modern AGI systems was the development of large language models that could operate across multiple domains. The most important milestone in this area was the development of the Transformer architecture by Vaswani et al. in their 2017 paper Attention is all you need. This architecture has shown remarkable effectiveness for language modeling tasks and has since replaced recurrent neural networks as the dominant approach to processing sequential data.</p>
+                        <p>The proof-of-concept value of large language models was demonstrated by OpenAI's GPT-3 paper, which showed that increasing the number of model parameters leads to improvements in performance across a wide range of tasks. The paper reports that the 175 billion parameter model successfully achieved strong few-shot performance on many downstream tasks, although some limitations were also noted. This paper, along with similar approaches from other companies, has since led to the development of modern foundation models.</p>
+                        <p>A 2021 paper describing the foundation-models by Bommasani et al. highlights the fact that these large-scale systems represent a shift away from narrow AI systems toward systems that have broad language understanding, vision, robotic, reasoning, and interaction capabilities. The paper also notes the accompanying societal risks posed by these systems, including the fact that many capabilities are learned from training data, and therefore, weaknesses in the training data can lead to weaknesses in the model itself.</p>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section id="sec-4" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">4. Why Modern AI Looks More General</h2>
+                        <p>One reason why the prospect of AGI inspires such fear and fascination is that modern AI systems are rapidly demonstrating a capacity to operate across domains. Traditional narrow AI systems were designed to operate within a specific domain: a calculator, for example, was designed to perform arithmetic calculations. Modern large-scale foundation models, by contrast, can operate across natural language, computer code, mathematical formulas, and various other types of data.</p>
+                        <p>These systems still require substantial amounts of training data, but this data enables them to acquire broad competencies that can be transferred to different tasks. The ability to operate across domains has been enhanced by the fact that the amount of training data needed to build these systems has increased dramatically. According to the empirical scaling laws developed by Kaplan et al., language model performance depends on the amount of data, the size of the model, and the number of training iterations.</p>
+                        <p>A critical implication of these findings is that researchers can enhance model performance by allocating more computing resources to train larger models using more data. The 2026 AI Index shows that this strategy has been very rewarding for the AI industry: most of the state-of-the-art models were developed by companies, not academic institutions, and many of these models exhibit extremely high levels of skill on various benchmarks. However, the same report notes that the most capable models are also much harder to evaluate since some companies do not publish information about their model sizes and training data.</p>
+                        <p>While the increasing capabilities of modern AI systems are undeniable, it is important to recognize that these capabilities are enabled by additional factors beyond the amount of data and model size. Modern AI systems benefit from tools such as external memory, planning algorithms, and computer interaction, all of which contribute to their overall level of intelligence. These capabilities allow AI systems to operate more generally and flexibly, which is why they can be viewed as precursors to AGI.</p>
+                    </section>
+
+                    <!-- Section 5 -->
+                    <section id="sec-5" class="space-y-6">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">5. Core Capabilities Required for AGI</h2>
+                        <p>AGI represents an intellectual challenge to humanity because it would be the first artificial intelligence that would surpass humans in intellectual capacity. To operate successfully in the real world, such a system would need to possess a certain set of core capabilities.</p>
+
+                        <div class="space-y-4 pl-4 border-l-2 border-indigo-500">
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">5.1 Perception</h3>
+                                <p>Humans are intelligent primarily because they can perceive and manipulate objects in their environment. Therefore, an AGI system would need to have perceptive capabilities that would allow it to function effectively in the physical and social worlds. Modern AI systems have made significant strides in this area: multimodal systems, for example, can process and generate natural language, computer code, and visual information.</p>
+                                <p>However, as the 2026 AI Index demonstrates, current systems have a mixed record when it comes to perceptual tasks. The report notes the phenomenon of "jagged intelligence" by observing that many AI systems demonstrate an amazing ability to solve mathematical problems while being unable to read a clock. According to the report, the leading models achieved an accuracy of 50.6% on the analog-clock benchmark, which is significantly lower than the accuracy of 90.1% achieved by humans.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">5.2 Reasoning</h3>
+                                <p>Reasoning is a critical component of human intelligence that enables people to solve problems, plan, make decisions, and learn from experience. Reasoning involves such cognitive abilities as applying logical rules, identifying patterns, comparing objects and events, analyzing information, and synthesizing knowledge. Modern AI systems excel at some reasoning tasks, such as mathematical calculations, but often struggle with abstract reasoning and problem-solving in new situations. For example, the AI Index highlights the impressive performance of modern systems on standardized tests like the SAT Math test and the MATH challenge. However, a closer examination of the results reveals that many systems struggle to solve more complex problems that go beyond the standard curriculum.</p>
+                                <p>Thus, an AGI system would need to have advanced reasoning capabilities to solve a variety of challenging tasks. In addition, such a system would need to possess metareasoning capabilities to evaluate its own reasoning skills.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">5.3 Learning and Adaptation</h3>
+                                <p>An important feature that distinguishes humans from other animals is their ability to learn new skills and adapt to new environments. AGI systems would need to have similar capabilities to perform tasks that go beyond their initial programming. Fortunately, modern foundation models have demonstrated some impressive learning capabilities, including few-shot learning and instruction following. However, these capabilities are not sufficient to rival human learning and adaptability. For example, while GPT-3 demonstrated impressive few-shot learning abilities, the authors of the model were quick to note limitations, including a lack of domain-specific knowledge. Thus, while an AGI system would need to learn new skills rapidly, it would also need to retain previously acquired skills and apply them effectively in practice.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">5.4 Memory</h3>
+                                <p>Another hallmark of human intelligence is memory. Human memory can be divided into working memory and long-term memory. Working memory refers to the ability to temporarily store and manipulate information, while long-term memory refers to the ability to store information for extended periods of time. The 2025 AGI framework by Hendrycks et al. highlights long-term memory as one of the most important capabilities that current AI systems lack.</p>
+                                <p>Modern foundation models have context-length and external memory capabilities that allow them to operate effectively in the short term. However, these systems are still limited when it comes to long-term memory capabilities. Thus, AGI systems would need to have the ability to retain important information over long time periods.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">5.5 Planning and Autonomy</h3>
+                                <p>Planning is a uniquely human cognitive ability that enables people to anticipate future events and act accordingly. AGI systems would need to have planning capabilities to operate effectively in the real world. This would allow such systems to organize their activities, operate various types of machinery, and achieve specific goals. The development of autonomous AI systems is reflected in the impressive performance of such systems in the tasks of the OSWorld benchmark. According to the 2026 AI Index, the best systems were able to complete 66.3% of tasks, compared to about 12% in 2023. However, the same report notes that AI systems still struggle with challenging tasks, with the agents being unable to complete roughly one out of every three structured tasks.</p>
+                                <p>This illustrates the fact that while modern AI systems have impressive autonomy capabilities, such capabilities are far from universal.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section id="sec-6" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">6. Intelligence Is Not the Same as Benchmark Performance</h2>
+                        <p>A key challenge to evaluating AGI systems is determining what benchmark performance metrics should be used. Most standard AI benchmarks are designed to measure one particular type of intelligence, such as perceptual ability or mathematical reasoning. However, AGI systems are supposed to be capable of more than just performing well on specific tasks. They are supposed to be capable of exercising general intelligence that can be transferred to different tasks. Unfortunately, the growing capabilities of modern AI systems are largely concentrated in specific areas.</p>
+                        <p>The 2026 AI Index highlights this phenomenon by demonstrating how frontier models have made huge gains in terms of performance on the Humanity's Last Exam benchmark, but only within a relatively short time frame of one year. At the same time, the report notes that many benchmarks are becoming less informative as performance tends to saturate after only a few months of progress. The report also discusses various reliability and benchmark manipulation issues, pointing out that for some widely used benchmarks, the rates of invalid items reached 42%.</p>
+                        <p>Thus, when developing benchmarks for measuring AGI, it is critical to ensure that they meet the following criteria:</p>
+                        <ol class="list-decimal pl-6 space-y-2">
+                            <li>They should require some level of transfer.</li>
+                            <li>They should measure multiple cognitive abilities.</li>
+                            <li>They should assess long-horizon capabilities.</li>
+                            <li>They should include tasks that require real-world robustness.</li>
+                        </ol>
+                        <p>A useful framework for developing such benchmarks is provided by the Google DeepMind Levels of AGI framework, which explicitly separates depth and breadth. Another approach to benchmark design is reflected in the 2025 research agenda by Hendrycks et al. This framework outlines ten cognitive domains that can serve as a basis for developing new benchmarks. By adopting a multidimensional approach to assessment, researchers will be able to get a more realistic picture of the capabilities of modern AI systems.</p>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section id="sec-7" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">7. Is AGI Already Here?</h2>
+                        <p>As of September 5, 2026, it is premature to conclude that AGI has been achieved. This is not because modern AI systems are not capable enough. On the contrary, as the 2026 AI Index demonstrates, many frontier language models have already surpassed humans on various scientific, mathematical, and multimodal benchmarks. In addition, the index highlights the tremendous progress in the field of agentic computer use and AI-assisted science. However, as the index shows, the capabilities of these systems are often limited to specific areas. While these systems may perform exceptionally well on scientific reasoning tasks, they often fail to perform simple everyday tasks. The index highlights the uneven nature of progress by noting that the best models score only 38.8% on the PaperArena benchmark compared to an 83.5% expert score.</p>
+                        <p>This suggests that while modern AI systems are indeed capable, their capabilities are far from universal. Thus, when assessing whether AGI exists at a given moment, it is critical to consider not only the capabilities that have been achieved but also the capabilities that have not been achieved. The capabilities of AI systems are distributed unevenly across different cognitive domains, with some areas demonstrating much greater proficiency than others. This is illustrated by the fact that while many AI systems are capable of performing complex mathematical calculations, they often struggle with tasks that require common sense or basic physical interaction with the environment.</p>
+                        <p>The next critical step in the development of AGI will be to close these capability gaps so that AI systems can perform a wider variety of tasks with a high degree of proficiency. This will require fundamental advances in such areas as spatial reasoning, physical interaction, common-sense reasoning, and long-term memory.</p>
+                    </section>
+
+                    <!-- Section 8 -->
+                    <section id="sec-8" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">8. The "Jagged Intelligence" Problem</h2>
+                        <p>A key characteristic of modern AI is that its capabilities are uneven.</p>
+                        <p>The same is true of human intelligence, but we humans tend to have a relatively stable baseline of general competence. A typical person would be bad at advanced mathematics, but could read a clock, identify common things, navigate a known place, understand social context, and learn basic procedures.</p>
+                        <p>AI systems can display the reverse pattern.</p>
+                        <p>A system might solve advanced mathematics, but make fundamental errors in perception. It might generate professional-quality software, but misunderstand a typical physical situation. It might summarize a scientific paper proficiently, but fail at replicating the experiment.</p>
+                        <p>The 2026 AI Index explicitly notes this phenomenon by contrasting gold-medal mathematical performance with significantly worse analog-clock recognition.</p>
+                        <p>This raises an important theoretical issue: does high competence in a constellation of domains eventually lead to general intelligence, or does a different cognitive architecture need to be developed?</p>
+                        <p>There is currently no definitive answer.</p>
+                        <p>One option is that scaling, multimodality, tool use, memory, and agentic training will gradually smooth the "jaggedness." An alternative is that existing architectures will require substantial additions to be genuinely general.</p>
+                        <p>The issue is a scientific one rather than a resolved one.</p>
+                    </section>
+
+                    <!-- Section 9 -->
+                    <section id="sec-9" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">9. Possible Technical Paths Toward AGI</h2>
+                        <p>There is no established engineering recipe for developing AGI.</p>
+                        <p>One approach would continue to involve scaling of foundation models. Scaling-law research demonstrates empirically that increases in model size, data, and computation can systematically improve performance.</p>
+                        <p>Another approach would combine large models with external tools. Instead of requiring the model to encode every possible capability, the system would use search, calculators, software execution, databases, code interpreters, and other tools.</p>
+                        <p>A third potential approach would focus on agent architectures. These give models persistent goals, memory, planning loops, tool access, and environmental feedback.</p>
+                        <p>A fourth possible route would be to integrate multimodal perception and robotics. If, in part, intelligence arises from interaction with the physical world, then AGI might need to learn not only from text, but also from perception and action.</p>
+                        <p>A fifth hypothetical approach would be to combine different learning paradigms. Systems might combine supervised learning, reinforcement learning, self-supervised learning, planning, symbolic representations, and other techniques.</p>
+                        <p>The history of AI suggests caution about assuming one technique will dominate forever. Symbolic systems were once dominant; statistical learning later became more prominent; deep neural networks then transformed the space. Modern systems already employ multiple methods.</p>
+                        <p>As a result, AGI might emerge not from one revolutionary algorithm, but from the integration of multiple technologies.</p>
+                    </section>
+
+                    <!-- Section 10 -->
+                    <section id="sec-10" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">10. Robotics and Embodiment</h2>
+                        <p>Whether AGI needs a physical body is one of the major unresolved questions.</p>
+                        <p>Human general intelligence developed in an embodied organism interacting with a physical world. We learned cause-and-effect from action, experienced spatial relationships, and continually received sensory feedback.</p>
+                        <p>However, many components of intelligence can be demonstrated without a physical body. One can perform math reasoning, programming, scientific analysis, writing, and abstract planning in a virtual environment.</p>
+                        <p>Current evidence suggests that physical embodiment remains a difficult frontier. The 2026 AI Index reports that robots perform successfully on only about 12% of real household tasks, despite much better performance in simulated environments.</p>
+                        <p>That highlights the difference between digital competence and world competence.</p>
+                        <p>A robot working in a controlled factory can exploit predictable geometry, lighting, object locations, and procedures. A home includes clutter, ambiguous objects, humans, animals, fragile items, obstructing objects, and unpredictable conditions.</p>
+                        <p>An AGI capable of robust operation in the physical world would need perception, planning, motor control, causal understanding, common sense, uncertainty-handling, and failure-recovery abilities.</p>
+                        <p>Whether those capabilities emerge naturally from sufficiently powerful digital models or require specific embodied learning remains unresolved.</p>
+                    </section>
+
+                    <!-- Section 11 -->
+                    <section id="sec-11" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">11. AGI and Scientific Discovery</h2>
+                        <p>One of the strongest arguments in favor of pursuing AGI is its potential effect on science.</p>
+                        <p>AI systems are already being used for scientific prediction, literature analysis, molecular design, protein research, coding, astronomy, climate science, and other areas.</p>
+                        <p>The 2026 AI Index reports approximately 80,150 AI-related natural-science publications in 2025, an increase of 26% compared to 2024. It also reports that frontier models can outperform human experts on some specialized chemistry questions, but perform poorly on full research replication and end-to-end scientific tasks.</p>
+                        <p>This is an essential distinction.</p>
+                        <p>Answering a scientific question is not the same as conducting science.</p>
+                        <p>A scientist needs to define a useful question, design a methodology, understand measurement limitations, collect and analyze evidence, interpret unexpected results, revise hypotheses, communicate findings, and reproduce work.</p>
+                        <p>A more general AI research agent would therefore need to perform as a scientific workflow rather than simply as a question-answering model.</p>
+                        <p>Successful AGI could potentially accelerate science by allowing researchers to explore a huge number of hypotheses, automate repetitive experiments, analyze complex data, and connect knowledge across disciplines.</p>
+                        <p>However, AI-generated hypotheses could also be wrong, misleading, or optimized for superficial novelty. Scientific usefulness would therefore require verification, experimentation, and reproducibility.</p>
+                    </section>
+
+                    <!-- Section 12 -->
+                    <section id="sec-12" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">12. Economic Implications</h2>
+                        <p>AGI has potentially enormous economic significance because intelligence is deeply integrated into economic production.</p>
+                        <p>OpenAI's definition explicitly links AGI with systems capable of outperforming humans at most economically valuable work.</p>
+                        <p>Even without AGI, AI is already affecting labor markets. The Stanford 2026 AI Index reports that organizational AI adoption reached 88% in surveyed organizations and that generative AI was used in at least one business function at approximately 70% of organizations. The report also documents concentrated labor-market effects, including a nearly 20% drop in employment among software developers aged 22 to 25 between 2024 and the reported 2025.</p>
+                        <p>These statistics cannot, on their own, be taken as evidence that AI alone caused employment changes, as labor markets are influenced by many variables. Nevertheless, they demonstrate that AI is already economically consequential.</p>
+                        <p>AGI could magnify these effects significantly.</p>
+                        <p>Highly capable AI could lower the cost of software development, research, analysis, design, education, translation, and many forms of knowledge work. It could increase productivity and create new industries.</p>
+                        <p>However, the distribution of benefits matters as much as the overall increase in output.</p>
+                        <p>If access to highly capable systems is concentrated among a few companies or states, then AGI could increase economic inequality and political concentration. The 2026 AI Index reports that private AI investment remains highly concentrated geographically, with the United States continuing to dominate global private AI investment despite increasing competition from China and other areas.</p>
+                        <p>AGI therefore poses both a technological question and an institutional one: who controls advanced intelligence, who has access to it, and how are its benefits distributed?</p>
+                    </section>
+
+                    <!-- Section 13 -->
+                    <section id="sec-13" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">13. Safety and Alignment</h2>
+                        <p>The development of increasingly autonomous systems creates a corresponding need for safety research.</p>
+                        <p>A useful distinction is between ordinary AI risk and advanced AI risk.</p>
+                        <p>Ordinary risks include misinformation, privacy violations, bias, cybersecurity vulnerabilities, harmful outputs, unreliable decisions. NIST's Generative AI Profile identifies these and other risks as areas requiring structured management throughout the AI lifecycle.</p>
+                        <p>Advanced AI adds an additional component: systems capable of sustained autonomous action may produce significantly larger-scale consequences.</p>
+                        <p>The alignment problem can be phrased simply: how can designers ensure a system consistently behaves according to human intentions and acceptable constraints, especially if it is very capable and operating in unfamiliar situations?</p>
+                        <p>Alignment is difficult because human objectives are often incomplete.</p>
+                        <p>A person might tell an AI agent to "maximize productivity," but that instruction doesn't specify everything they value. A literal optimizer could pursue the goal in ways that satisfy the instruction while causing undesirable side effects.</p>
+                        <p>Therefore, advanced AI safety is not merely about writing down explicit rules. It may require robust preference learning, uncertainty estimation, interpretability, monitoring, evaluation, containment strategies, secure deployment, and governance.</p>
+                        <p>DeepMind's AGI-levels paper explicitly ties capability and autonomy with risk and deployment considerations.</p>
+                        <p>The substantial uncertainty means that safety should not be considered a final stage that comes after capabilities are done. Safety research must develop alongside capability research.</p>
+                    </section>
+
+                    <!-- Section 14 -->
+                    <section id="sec-14" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">14. Governance and Concentration of Power</h2>
+                        <p>AGI raises governance issues that ordinary software regulation cannot fully address.</p>
+                        <p>The most powerful AI systems increasingly require considerable computing infrastructure, specialized hardware, energy, data, and highly-skilled researchers. Stanford's 2026 AI Index reports that the most advanced frontier models are mostly produced by industry and that costs and infrastucture around training leading systems continue to rise.</p>
+                        <p>This creates a structural tension.</p>
+                        <p>On one side, private companies have strong motivations to invest billions of dollars into model development, since advanced AI may generate enormous economic value.</p>
+                        <p>On the other side, concentrating extremely powerful systems in a few institutions may create risks surrounding competition, political influence, security, and unequal access.</p>
+                        <p>International governance is difficult because countries have different interests. One state might see advanced AI primarily as an economic opportunity, while another might prioritize security or social risk.</p>
+                        <p>A stable AGI future may therefore require cooperation around evaluations, incident reporting, cybersecurity, model security, scientific research, and international standards.</p>
+                        <p>The form of such governance is still uncertain. However, the governance problem is becoming more urgent with increasing capability and autonomy.</p>
+                    </section>
+
+                    <!-- Section 15 -->
+                    <section id="sec-15" class="space-y-6">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">15. Why AGI Is Difficult to Achieve</h2>
+                        <p>Several major obstacles remain.</p>
+
+                        <div class="space-y-4 pl-4 border-l-2 border-indigo-500">
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">15.1 Generalization</h3>
+                                <p>Systems still struggle to reliably generalize beyond the conditions they were trained or evaluated in.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">15.2 Reliability</h3>
+                                <p>A useful AGI cannot merely be brilliant on average, but must behave predictably enough to be trusted in consequential environments.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">15.3 Long-Term Planning</h3>
+                                <p>Completing a single answer is easier than maintaining a coherent objective over hundreds or thousands of actions.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">15.4 Memory</h3>
+                                <p>Persistent learning and retrieval over time remains challenging.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">15.5 Physical Understanding</h3>
+                                <p>Robust interaction with the physical world is far more challenging than operation in a digital environment.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">15.6 Common-Sense Reasoning</h3>
+                                <p>Human common sense has enormous implicit knowledge about cause-and-effect, social behavior, objects, time, and everyday life.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">15.7 Self-Correction</h3>
+                                <p>A true general system should recognize when it is uncertain, detect mistakes, acquire additional information, and revise its beliefs.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">15.8 Evaluation</h3>
+                                <p>The scientific community still does not have a universally accepted, comprehensive test for AGI. Existing benchmarks are often narrow, saturate quickly, or have measurement issues.</p>
+                            </div>
+                        </div>
+
+                        <p>These problems are not independent. Stronger memory can improve planning. Better perception can improve robotics. Better reasoning can improve self-correction. Therefore, the path to AGI is likely to involve improving a network of interacting capabilities, rather than optimizing one variable.</p>
+                    </section>
+
+                    <!-- Section 16 -->
+                    <section id="sec-16" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">16. A Better Scientific Definition of AGI</h2>
+                        <p>A useful definition should satisfy two requirements.</p>
+                        <p>First, it should be broad enough to capture genuine general intelligence, rather than a single benchmark achievement.</p>
+                        <p>Second, it should be operational enough that different researchers can test the same claim.</p>
+                        <p>A practical working definition would be:</p>
+                        <p class="pl-4 border-l-2 border-indigo-500 italic">AGI is an artificial system that is capable of learning, reasoning, adapting, and acting across a broad range of substantially different cognitive and practical environments, achieving high and reliably sufficient performance without requiring task-specific engineering for each new problem.</p>
+                        <p>Under this definition, five dimensions are particularly important:</p>
+                        <p>Generality: How many substantially different domains can the system operate across?<br>
+                        Depth: How well does it perform compared to competent humans?<br>
+                        Adaptability: How quickly can it learn unfamiliar tasks?<br>
+                        Autonomy: How independently can it pursue long-term objectives?<br>
+                        Robustness: How reliably does performance hold when situations change?</p>
+                        <p>This definition does not include consciousness as a requirement. Consciousness may ultimately be an important philosophical and scientific question, but it is unclear whether subjective experience is necessary for general intelligence. An AGI test should first focus on observable capabilities.</p>
+                        <p>It also does not include a human-like physical body as a requirement. Embodiment should be measured as a capability dimension rather than a binary requirement.</p>
+                        <p>This multidimensional approach is consistent with the broader direction suggested by Google DeepMind's AGI-levels framework and newer attempts to quantify AGI across multiple cognitive domains.</p>
+                    </section>
+
+                    <!-- Section 17 -->
+                    <section id="sec-17" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">17. The Future of AGI Research</h2>
+                        <p>The future of AGI research is likely to involve a confluence of fields.</p>
+                        <p>Machine learning will remain vital, but progress will increasingly rely on memory systems, planning algorithms, reinforcement learning, multimodal perception, robotics, human-computer interaction, cognitive science, neuroscience, and AI safety.</p>
+                        <p>The foundation-model paradigm has already demonstrated the importance of general representations. The next step may be to transform these models from systems that mainly generate responses into systems that can maintain goals, interact with environments, acquire knowledge, use tools, and learn continuously.</p>
+                        <p>This transition is already evident in agentic systems and scientific AI.</p>
+                        <p>However, greater autonomy should not be mistaken for AGI. An agent can be autonomous but narrow; a model can be very broad but require human direction.</p>
+                        <p>The primary challenge is therefore integration.</p>
+                        <p>AGI would need broad competence to be able to work with reliability, memory, adaptation, planning, and autonomy together.</p>
+                    </section>
+
+                    <!-- Section 18 -->
+                    <section id="sec-18" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">18. Conclusion</h2>
+                        <p>Artificial General Intelligence is best viewed not as a mysterious future machine, but as a scientific objective concerning the generality of machine intelligence.</p>
+                        <p>The history of AI shows a gradual expansion in what machines can do. Turing transformed the philosophical question of machine thought into a behavioral problem. The Dartmouth project established artificial intelligence as a research field. Symbolic systems demonstrated the power of formal reasoning. Machine learning enabled systems to learn statistical structure from data. Deep learning and the 2012 ImageNet breakthrough demonstrated the power of large neural networks. Transformers then enabled large-scale foundation models whose capabilities extend across many tasks.</p>
+                        <p>The current generation of AI systems is significantly more general than the narrow systems of previous decades. Frontier models can reason across disciplines, generate and analyze code, process multiple modalities, assist with science, and increasingly operate software environments. The Stanford 2026 AI Index provides strong quantitative evidence of this progress.</p>
+                        <p>However, that evidence simultaneously demonstrates why announcing AGI prematurely would be scientifically weak.</p>
+                        <p>Current AI systems are highly uneven, performing well on some hard domains but poorly on easy tasks. Computer-use agents continue to fail a substantial fraction of attempts. Robots are far from reliable general household competence. Scientific agents are substantially worse than expert performance on some end-to-end research tasks. Long-term memory, adaptability, robustness, and trustworthy autonomy are unresolved problems.</p>
+                        <p>For this reason, AGI should not be judged on a single impressive demonstration. A system that solves a difficult mathematical problem, passes a famous benchmark, or generates human-like conversation is evidence of capability, but not of general intelligence.</p>
+                        <p>A more credible scientific standard would require evidence of broad and deep competence, rapid adaptation to unfamiliar tasks, reliable long-horizon planning, persistent memory, effective interaction with tools and environments, and robust performance on conditions that were not explicitly represented during development.</p>
+                        <p>The most important question, therefore, is not simply "When will AGI arrive?" but "What combination of capabilities would justify concluding that a machine possesses general intelligence?"</p>
+                        <p>Answering that question is itself part of the AGI problem.</p>
+                        <p>As AI systems grow more capable, the distinction between narrow AI, foundation models, agents, and AGI will likely become increasingly important. The future may not involve a single dramatic point in which intelligence becomes general, but instead AGI may emerge as systems gradually become broader, more adaptable, more autonomous, more reliable, and more capable of learning across environments.</p>
+                        <p>Whether that transition can be accomplished safely is one of the central scientific and societal questions of the twenty-first century.</p>
+                    </section>
+
+                    <!-- References -->
+                    <section id="references" class="space-y-4 pt-6 border-t-2 border-slate-200 dark:border-slate-800">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-slate-900 dark:text-slate-100">References</h2>
+                        <ol class="list-decimal pl-6 space-y-2 text-sm text-slate-600 dark:text-slate-400 font-sans">
+                            <li>Bommasani, R., Hudson, D. A., Adeli, E., Altman, R., Arora, S., von Arx, S., Bernstein, M. S., Bohg, J., Bosselut, A., Brunskill, E., et al. (2021). On the Opportunities and Risks of Foundation Models. arXiv:2108.07258.</li>
+                            <li>Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J. D., Dhariwal, P., Neelakantan, A., et al. (2020). Language Models are Few-Shot Learners. arXiv:2005.14165.</li>
+                            <li>Hendrycks, D., Song, D., Szegedy, C., Lee, H., Gal, Y., Brynjolfsson, E., Li, S., Zou, A., Levine, L., Tegmark, M., Marcus, G., Bengio, Y., et al. (2025). A Definition of AGI. arXiv:2510.18212.</li>
+                            <li>Kaplan, J., McCandlish, S., Henighan, T., Brown, T. B., Chess, B., Child, R., Gray, S., Radford, A., Wu, J., & Amodei, D. (2020). Scaling Laws for Neural Language Models. arXiv:2001.08361.</li>
+                            <li>Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). ImageNet Classification with Deep Convolutional Neural Networks. Advances in Neural Information Processing Systems, 25.</li>
+                            <li>McCarthy, J., Minsky, M. L., Rochester, N., & Shannon, C. E. (1955/2006). A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence, August 31, 1955. AI Magazine, 27(4), 12.</li>
+                            <li>Morris, M. R., Sohl-dickstein, J., Fiedel, N., Warkentin, T., Dafoe, A., Faust, A., Farabet, C., & Legg, S. (2024). Levels of AGI for Operationalizing Progress on the Path to AGI. Proceedings of ICML 2024.</li>
+                            <li>National Institute of Standards and Technology. (2024, updated 2026). Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile. NIST AI 600-1.</li>
+                            <li>OECD. (2024). Explanatory Memorandum on the Updated OECD Definition of an AI System. OECD Artificial Intelligence Papers, No. 8.</li>
+                            <li>OpenAI. OpenAI Charter. OpenAI.</li>
+                            <li>Stanford Institute for Human-Centered Artificial Intelligence. (2026). The 2026 AI Index Report. Stanford University.</li>
+                            <li>Stanford Institute for Human-Centered Artificial Intelligence. (2026). The 2026 AI Index Report: Technical Performance. Stanford University.</li>
+                            <li>Stanford Institute for Human-Centered Artificial Intelligence. (2026). The 2026 AI Index Report: Economy. Stanford University.</li>
+                            <li>Stanford Institute for Human-Centered Artificial Intelligence. (2026). The 2026 AI Index Report: Science. Stanford University.</li>
+                            <li>Turing, A. M. (1950). Computing Machinery and Intelligence. Mind, 59(236), 433–460.</li>
+                            <li>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention Is All You Need. arXiv:1706.03762.</li>
+                            <li>Legg, S., & Hutter, M. (2007). Universal Intelligence: A Definition of Machine Intelligence. arXiv:0712.3329.</li>
+                        </ol>
+                    </section>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mt-20 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Sahlan Hasan Research. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Script
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // BibTeX Toggle
+        function toggleBibtex() {
+            const modal = document.getElementById('bibtexModal');
+            modal.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
