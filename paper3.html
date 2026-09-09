@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahlan Hasan Research | AI in Education and Adaptive Learning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-200">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="w-3 h-3 bg-indigo-600 rounded-full animate-pulse"></span>
+                <a href="index.html" class="font-bold text-xl tracking-tight text-indigo-600 dark:text-indigo-400">Sahlan Hasan Research</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="index.html" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition"><i class="fa-solid fa-arrow-left mr-1"></i>All Papers</a>
+                <a href="#abstract" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">Abstract</a>
+                <a href="#paper" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">Read Paper</a>
+                <a href="#references" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">References</a>
+                <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+            <!-- Sidebar Navigation / Metadata -->
+            <aside class="lg:col-span-1 space-y-8">
+                <div class="sticky top-24 space-y-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Publication Details</h3>
+                        <div>
+                            <p class="text-xs text-slate-500">Author</p>
+                            <p class="font-semibold text-slate-800 dark:text-slate-200">Sahlan Hasan</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500">Document Type</p>
+                            <p class="font-semibold text-slate-800 dark:text-slate-200">Research Essay</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500">Focus Areas</p>
+                            <div class="flex flex-wrap gap-1 mt-1">
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">AI in Education</span>
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">Adaptive Learning</span>
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">EdTech</span>
+                            </div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-2">
+                            <button onclick="toggleBibtex()" class="w-full py-2 px-4 text-xs font-medium bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition text-center block">
+                                <i class="fa-solid fa-quote-right mr-2"></i> Cite Paper
+                            </button>
+                            <a href="paper3.pdf" download class="w-full py-2 px-4 text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg transition text-center flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-download"></i> Download PDF
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Table of Contents Sidebar -->
+                    <div class="hidden lg:block p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Contents</h3>
+                        <nav class="space-y-1 max-h-[50vh] overflow-y-auto text-xs pr-2">
+                            <a href="#abstract" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">Abstract</a>
+                            <a href="#sec-1" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">1. Introduction</a>
+                            <a href="#sec-2" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">2. Defining AI in Education</a>
+                            <a href="#sec-3" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">3. What Is Adaptive Learning?</a>
+                            <a href="#sec-4" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">4. From ITS to 2026 AI Tutors</a>
+                            <a href="#sec-5" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">5. The 2026 Evidence Base</a>
+                            <a href="#sec-6" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">6. Evidence on Adaptive Learning</a>
+                            <a href="#sec-7" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">7. AI and Self-Regulated Learning</a>
+                            <a href="#sec-8" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">8. Generative AI vs. Genuine Learning</a>
+                            <a href="#sec-9" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">9. Learner-State-Aware AI</a>
+                            <a href="#sec-10" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">10. Why RAG Matters</a>
+                            <a href="#sec-11" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">11. Mathematics Education</a>
+                            <a href="#sec-12" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">12. STEM Education</a>
+                            <a href="#sec-13" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">13. Personalized ≠ Perfect Learning</a>
+                            <a href="#sec-14" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">14. Advantages of Adaptive AI</a>
+                            <a href="#sec-15" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">15. The Teacher-AI Relationship</a>
+                            <a href="#sec-16" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">16. Privacy and Student Data</a>
+                            <a href="#sec-17" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">17. Algorithmic Bias</a>
+                            <a href="#sec-18" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">18. Academic Integrity</a>
+                            <a href="#sec-19" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">19. The Risk of Dependency</a>
+                            <a href="#sec-20" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">20. Engagement ≠ Learning</a>
+                            <a href="#sec-21" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">21. Evaluating Adaptive AI</a>
+                            <a href="#sec-22" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">22. Cost and Scalability</a>
+                            <a href="#sec-23" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">23. AI Literacy</a>
+                            <a href="#sec-24" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">24. The Digital Divide</a>
+                            <a href="#sec-25" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">25. Future Technical Architecture</a>
+                            <a href="#sec-26" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">26. Toward Agentic Education</a>
+                            <a href="#sec-27" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">27. Why Findings Conflict</a>
+                            <a href="#sec-28" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">28. A More Rigorous Model</a>
+                            <a href="#sec-29" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">29. Future Research</a>
+                            <a href="#sec-30" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">30. Conclusion</a>
+                            <a href="#references" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">References</a>
+                        </nav>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="lg:col-span-3 space-y-12">
+
+                <!-- Header Title Banner -->
+                <header class="space-y-6 border-b border-slate-200 dark:border-slate-800 pb-10">
+                    <span class="px-3 py-1 text-xs font-semibold tracking-wider text-indigo-600 bg-indigo-100 dark:bg-indigo-950 dark:text-indigo-300 rounded-full uppercase">Academic Essay</span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif leading-tight tracking-tight text-slate-900 dark:text-white">
+                        Artificial Intelligence in Education and Adaptive Learning: A 2026 Evidence-Based Analysis of Personalized Learning, Intelligent Tutoring, Generative AI, and Educational Transformation
+                    </h1>
+                    <div class="flex items-center space-x-4 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="font-medium text-slate-900 dark:text-slate-200">Sahlan Hasan</span>
+                    </div>
+                </header>
+
+                <!-- BibTeX Modal (Hidden by Default) -->
+                <div id="bibtexModal" class="hidden p-4 bg-slate-900 text-slate-200 rounded-xl font-mono text-xs overflow-x-auto relative border border-slate-800">
+                    <button onclick="toggleBibtex()" class="absolute top-2 right-2 text-slate-400 hover:text-white">✕</button>
+<pre>@article{hasan2026aiedu,
+  title={Artificial Intelligence in Education and Adaptive Learning: A 2026 Evidence-Based Analysis of Personalized Learning, Intelligent Tutoring, Generative AI, and Educational Transformation},
+  author={Hasan, Sahlan},
+  year={2026}
+}</pre>
+                </div>
+
+                <!-- Abstract -->
+                <section id="abstract" class="p-8 bg-indigo-50/50 dark:bg-slate-900/60 rounded-2xl border border-indigo-100 dark:border-slate-800 space-y-4">
+                    <h2 class="text-xl font-bold font-serif text-indigo-900 dark:text-indigo-300 flex items-center">
+                        <i class="fa-solid fa-bookmark mr-3 text-indigo-600"></i> Abstract
+                    </h2>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        Artificial intelligence (AI) is changing the architecture of education. Computer-assisted systems have given way to intelligent tutoring systems, machine-learning adaptive systems, learning analytics, multimodal educational systems, and, finally, generative AI tutors that can engage in conversation. The promise of these technologies is personalization: instead of every student following the same instructional sequence, an AI-enabled system can estimate what a learner knows, identify weaknesses, select appropriate content, generate explanations, provide feedback, and modify the learning pathway continuously.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        By 2026, however, the empirical evidence has become more nuanced than early claims about AI-powered educational transformation suggested. Recent systematic reviews and meta-analyses generally report positive average effects, but they also reveal substantial variation across educational levels, subjects, intervention designs, learning outcomes, and implementation conditions. A September 2026 meta-analysis synthesizing 215 independent effect sizes reported large average effects of AI-supported interventions on academic achievement and moderate effects on motivation, but emphasized that effectiveness varied by subject, duration, educational level, and pedagogical design. A June 2026 meta-analysis of AI-supported instruction in STEM reported a statistically significant positive effect of g = 0.67. At the same time, an August 2026 systematic review and meta-analysis of generative AI in STEM found extreme heterogeneity (I² = 96.32%) and concluded through robust Bayesian analysis that the apparent positive overall effect could be substantially attributed to publication bias. These apparently contradictory findings demonstrate that "AI in education" should not be treated as one intervention.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        Evidence concerning adaptive learning specifically is similarly conditional. A 2025 systematic review examined 142 empirical studies published between 2015 and 2025 and found widespread use of supervised learning, clustering, reinforcement learning, and multimodal approaches for personalization, while identifying persistent problems in interpretability, privacy, and scalability. A 2026 field experiment involving 132 second-grade students found that simply adapting task difficulty did not generate additional learning benefits over an otherwise identical non-adaptive intelligent tutoring system. This finding is particularly important because it suggests that adaptivity alone is not necessarily educationally effective; the quality and mechanism of adaptation matter.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        Generative AI introduces additional opportunities and risks. A 2026 randomized controlled trial with 371 secondary-school students examined AI-supported self-regulated learning and found improved perceived utility value under one intervention, but no statistically significant advantages over standard ChatGPT for effort, domain-specific knowledge, or elaboration-based strategy use. Conversely, an August 2026 study comparing a prompt-only tutor with a learner-state-aware retrieval-augmented generation (RAG) tutor found substantially stronger expert ratings for conceptual support and instructional quality in the RAG system, but also more unsupported-content flags. Importantly, that study did not measure student learning and therefore cannot establish educational effectiveness.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        The emerging evidence supports a central conclusion: AI is most promising in education when personalization is embedded within sound pedagogy, active student engagement, verified content, meaningful adaptation, and human oversight. AI should not be evaluated merely by whether it makes students faster or produces better immediate answers. The more important question is whether students retain knowledge, transfer it, reason independently, develop self-regulation, and become less dependent on the system.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        This paper examines the technical foundations, empirical evidence, educational mechanisms, applications, advantages, risks, teacher-AI collaboration, evaluation challenges, and future directions of AI-enabled adaptive learning. It argues that the most credible 2026 vision is not an automated replacement for teachers but an adaptive educational infrastructure in which AI handles continuous personalization and feedback while teachers remain responsible for pedagogy, interpretation, relationships, and accountability.
+                    </p>
+                    <div class="pt-4 border-t border-indigo-100 dark:border-slate-800 flex flex-wrap gap-2 text-xs">
+                        <span class="font-semibold text-slate-600 dark:text-slate-400">Keywords:</span>
+                        <span class="text-slate-600 dark:text-slate-300">Artificial Intelligence in Education, Adaptive Learning, Personalized Learning, Intelligent Tutoring Systems, Generative AI, Large Language Models, Learning Analytics, Educational Technology, AI Tutors, Self-Regulated Learning</span>
+                    </div>
+                </section>
+
+                <!-- Full Paper Content (Exact Verbatim Text) -->
+                <article id="paper" class="prose dark:prose-invert max-w-none font-serif text-slate-800 dark:text-slate-200 leading-relaxed space-y-10 text-lg">
+
+                    <!-- Section 1 -->
+                    <section id="sec-1" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">1. Introduction</h2>
+                        <p>For most of modern educational history, learning has been organized around standardization. A teacher presents a curriculum to a group of students, follows a sequence of lessons, assigns approximately the same work, and assesses students using common examinations.</p>
+                        <p>This structure is practical, but it creates a fundamental mismatch.</p>
+                        <p>Students are not identical.</p>
+                        <p>They enter classrooms with different prior knowledge, vocabulary, cognitive strengths, misconceptions, motivation, learning histories, and rates of progress. A lesson that is too easy for one student can be overwhelming for another. A traditional classroom can respond to these differences to some extent, but a teacher working with many students cannot continuously calculate an individualized learning trajectory for every student.</p>
+                        <p>Artificial intelligence creates the possibility of doing exactly that.</p>
+                        <p>An adaptive system can continuously observe evidence of student performance and use computational models to modify instruction. A student who repeatedly fails a prerequisite skill can be redirected toward foundational material, while another student who demonstrates mastery can advance to more challenging work. Generative AI adds another layer because explanations, questions, examples, feedback, and dialogue can potentially be produced dynamically rather than selected from fixed alternatives.</p>
+                        <p>The idea of computer-supported personalization is not new. Intelligent tutoring systems have been studied for decades. What has changed dramatically is the combination of sophisticated learner modeling, large-scale machine learning, foundation models, multimodal AI, retrieval systems, and natural-language interfaces.</p>
+                        <p>The growth of research in this area is substantial. A 2026 systematic review of AI and personalized learning by Ikram, Hanefar, Saleem, and Zulfiqar examined literature from the Scopus database spanning 2013–2025 and documented the rapid expansion of research into AI-supported personalization. The review emphasizes that the field is moving toward more sophisticated data-driven systems but continues to face concerns involving education quality, privacy, algorithmic bias, unequal access, and pedagogical integration.</p>
+                        <p>The question in 2026 is therefore no longer whether AI can technically personalize educational content. It clearly can.</p>
+                        <p>The more difficult question is whether that personalization produces better learning.</p>
+                        <p>That distinction is central to this paper.</p>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section id="sec-2" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">2. Defining Artificial Intelligence in Education</h2>
+                        <p>Artificial intelligence in education is an umbrella term covering a broad collection of technologies.</p>
+                        <p>It can include:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>intelligent tutoring systems;</li>
+                            <li>automated assessment;</li>
+                            <li>recommender systems;</li>
+                            <li>learning analytics;</li>
+                            <li>predictive models;</li>
+                            <li>natural-language educational assistants;</li>
+                            <li>generative AI;</li>
+                            <li>computer-vision systems;</li>
+                            <li>adaptive learning platforms;</li>
+                            <li>and AI-supported accessibility tools.</li>
+                        </ul>
+                        <p>Because these interventions are fundamentally different, evidence for one cannot automatically be generalized to another.</p>
+                        <p>An automated grading system is not an adaptive tutor.</p>
+                        <p>A chatbot that summarizes a textbook is not necessarily a learner model.</p>
+                        <p>A recommendation algorithm that suggests videos is not necessarily intelligent tutoring.</p>
+                        <p>This distinction has become particularly important since the arrival of generative AI.</p>
+                        <p>A general-purpose large language model can answer educational questions without maintaining a model of what the student already knows. An adaptive tutor, by contrast, should ideally use information about the learner's state when determining what to present next.</p>
+                        <p>Thus, generative and adaptive are not synonyms.</p>
+                        <p>A system can be generative without being adaptive, adaptive without being generative, or both.</p>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section id="sec-3" class="space-y-6">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">3. What Is Adaptive Learning?</h2>
+                        <p>Adaptive learning can be understood as a feedback-control system for instruction.</p>
+                        <p>At its simplest:</p>
+                        <p class="pl-4 border-l-2 border-indigo-500 font-sans text-base text-slate-600 dark:text-slate-400">Learner → evidence → learner model → instructional decision → new learning activity → new evidence</p>
+                        <p>The system continually updates its estimate of the learner.</p>
+                        <p>For example, consider algebra.</p>
+                        <p>A student answers five equation-solving questions:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>4 correct;</li>
+                            <li>1 incorrect;</li>
+                            <li>rapid performance on basic equations;</li>
+                            <li>repeated error when negative coefficients occur.</li>
+                        </ul>
+                        <p>An adaptive system could infer that general equation-solving ability is relatively strong but that a specific subskill remains weak.</p>
+                        <p>Instead of moving the student to an unrelated advanced topic, the system could supply a small number of targeted examples involving negative coefficients, provide a hint after a mistake, and then reassess.</p>
+                        <p>This is the essence of adaptive learning.</p>
+                        <p>Theoretically, the system can adapt at several levels:</p>
+
+                        <div class="space-y-3 pl-4 border-l-2 border-indigo-500">
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Content adaptation</h3>
+                                <p>Different students receive different materials.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Difficulty adaptation</h3>
+                                <p>The challenge increases or decreases.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Sequence adaptation</h3>
+                                <p>Students follow different learning pathways.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Feedback adaptation</h3>
+                                <p>The nature and amount of feedback changes.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Assessment adaptation</h3>
+                                <p>Questions become easier or harder depending on previous performance.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Pacing adaptation</h3>
+                                <p>Students spend different amounts of time on material.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Support adaptation</h3>
+                                <p>Hints, explanations, worked examples, or additional scaffolding appear according to need.</p>
+                            </div>
+                        </div>
+
+                        <p>Modern AI systems can potentially combine all of these mechanisms.</p>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section id="sec-4" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">4. From Intelligent Tutoring Systems to 2026 AI Tutors</h2>
+                        <p>Earlier intelligent tutoring systems were generally highly structured.</p>
+                        <p>They operated within specific domains and relied heavily on predefined rules, expert knowledge representations, student models, and carefully authored instructional content.</p>
+                        <p>These systems produced important evidence that computer-based individualized tutoring could improve learning.</p>
+                        <p>A major meta-analysis by Ma and colleagues, published in 2014, synthesized 107 effect sizes involving 14,321 learners. Intelligent tutoring systems produced positive effects compared with teacher-led large-group instruction, non-intelligent computer-based instruction, and textbooks or workbooks. However, intelligent tutoring did not significantly outperform individualized human tutoring.</p>
+                        <p>This old result remains important in 2026 because it illustrates a recurring pattern in educational technology research:</p>
+                        <p>Technology can improve instruction without necessarily making technology superior to excellent human teaching.</p>
+                        <p>Modern systems are substantially more flexible.</p>
+                        <p>Large language models can generate explanations, ask follow-up questions, adapt conversational style, produce examples, interpret free-text responses, and interact with students in real time.</p>
+                        <p>But greater flexibility creates greater uncertainty.</p>
+                        <p>A traditional tutoring system may only produce one of several verified responses.</p>
+                        <p>A generative tutor may produce an explanation that was never explicitly authored by a teacher.</p>
+                        <p>The result is a trade-off:</p>
+                        <p>greater personalization and flexibility versus greater uncertainty about generated content.</p>
+                    </section>
+
+                    <!-- Section 5 -->
+                    <section id="sec-5" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">5. The 2026 Evidence Base</h2>
+                        <p>The most important development in the current literature is the expansion of systematic reviews and meta-analyses.</p>
+                        <p>A 2026 meta-analysis by Doğan, Kılıç, Kalınkara, and Talan examined AI-supported instruction in STEM education and reported a statistically significant overall effect of g = 0.67, with a 95% confidence interval of 0.49 to 0.85. The analysis found that effectiveness varied according to educational level, disciplinary context, and duration, and the strongest effects were observed in high-school settings.</p>
+                        <p>Another September 2026 meta-analysis synthesized 215 independent effect sizes, including 172 achievement effects and 43 motivation effects. It reported an average achievement effect of d = 0.80 and a motivation effect of d = 0.64, while emphasizing substantial variation according to subject area, duration, educational level, and pedagogical design.</p>
+                        <p>Taken in isolation, these numbers might suggest that AI is producing universally large educational improvements.</p>
+                        <p>That interpretation would be incorrect.</p>
+                        <p>A highly important August 2026 systematic review and meta-analysis by Boolzen and colleagues examined generative AI specifically in STEM education. The authors screened 85 eligible studies and included 49 studies with 59 effect sizes in the quantitative meta-analysis. Their random-effects analysis found a positive overall effect, but the studies exhibited extraordinary heterogeneity, with I² = 96.32% and a prediction interval ranging from Hedges' g = -1.52 to 3.20.</p>
+                        <p>The authors then applied robust Bayesian meta-analysis and found that the apparent overall positive effect could be largely attributed to publication bias, with an estimated mean effect of μ = 0.076 ± 0.254. They also found substantial residual heterogeneity.</p>
+                        <p>This result is one of the most important findings for interpreting AI in education in 2026.</p>
+                        <p>It means that an overall average effect can conceal radically different outcomes.</p>
+                        <p>Some AI interventions may help substantially.</p>
+                        <p>Some may help modestly.</p>
+                        <p>Some may produce no measurable benefit.</p>
+                        <p>Some may even reduce learning.</p>
+                        <p>Therefore, the meaningful research question is no longer simply:</p>
+                        <p class="italic">"Does AI work?"</p>
+                        <p>It is:</p>
+                        <p class="italic">"Which AI system, for which learner, in which subject, using which pedagogical mechanism, produces which kind of learning outcome under which conditions?"</p>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section id="sec-6" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">6. Evidence Specifically About Adaptive Learning</h2>
+                        <p>Adaptive learning deserves separate treatment because it is narrower than AI in education generally.</p>
+                        <p>Hariyanto, Kristianingsih, and Maharani's 2025 systematic review analyzed 142 peer-reviewed empirical studies published from 2015 through 2025. It examined supervised learning, unsupervised learning, reinforcement learning, multimodal data integration, and other methods used for personalized digital learning environments.</p>
+                        <p>The review found that supervised models such as support-vector machines and decision trees can support learner classification and performance prediction; clustering can identify behavioral patterns; reinforcement learning can be used for dynamic content sequencing; and multimodal approaches can potentially improve personalization. The authors nevertheless identified continuing concerns involving interpretability, privacy, and scalability.</p>
+                        <p>A 2026 review by Sun and Cheng similarly describes AI-driven adaptive education systems as operating through personalization at the levels of content, learning pathways, and assessment. It highlights learning analytics, intelligent tutoring systems, and adaptive pathway design as core elements of contemporary systems.</p>
+                        <p>However, perhaps the most scientifically useful 2026 finding is a negative one.</p>
+                        <p>A randomized classroom field experiment with 132 second-grade students compared an adaptive intelligent tutoring system with a non-adaptive system that was otherwise kept equivalent in content, interface, feedback, and hints. The only manipulated feature was dynamic task-difficulty adaptation.</p>
+                        <p>The researchers found no significant difference between the conditions in learning outcomes, cognitive load, or enjoyment. Learner profiles also did not significantly moderate the effect.</p>
+                        <p>This is extremely important.</p>
+                        <p>It demonstrates that:</p>
+                        <p>Adaptivity itself is not automatically beneficial.</p>
+                        <p>Changing the difficulty of questions according to performance may sound personalized, but personalization only helps when the adaptation targets something educationally meaningful.</p>
+                        <p>The system might need to adapt:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>misconceptions;</li>
+                            <li>strategy;</li>
+                            <li>explanation;</li>
+                            <li>prerequisite knowledge;</li>
+                            <li>pacing;</li>
+                            <li>metacognitive support;</li>
+                            <li>feedback;</li>
+                            <li>or learning sequence,</li>
+                        </ul>
+                        <p>rather than simply adjusting question difficulty.</p>
+                        <p>Therefore, "adaptive learning" should not be treated as a single intervention.</p>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section id="sec-7" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">7. AI and Self-Regulated Learning</h2>
+                        <p>One of the more promising applications of AI is support for self-regulated learning (SRL).</p>
+                        <p>Self-regulated learning involves learners setting goals, monitoring progress, choosing strategies, managing effort, and adjusting behavior.</p>
+                        <p>AI systems can potentially support these processes by reminding learners of goals, asking reflective questions, suggesting strategies, or identifying patterns in their performance.</p>
+                        <p>A 2026 randomized controlled trial by Fütterer and colleagues investigated GenAI-supported self-regulated learning among 371 students in Grades 7–9. Students participated in six 45-minute sessions during physics or English lessons and were randomly assigned to interventions targeting motivational utility value, cognitive learning strategies, or a standard-ChatGPT control condition.</p>
+                        <p>The results were mixed.</p>
+                        <p>The utility-value intervention produced more favorable development in perceived usefulness of the learning content.</p>
+                        <p>However, neither intervention showed statistically significant advantages over the control condition for effort, domain-specific knowledge, or elaboration-based strategy use. Exploratory analyses suggested that meaningful engagement with GenAI was associated with more sustained interest.</p>
+                        <p>This is an excellent illustration of how educational AI research should be interpreted.</p>
+                        <p>AI may improve a particular psychological or motivational variable without necessarily increasing testable academic knowledge.</p>
+                        <p>An educational intervention can therefore succeed on one dimension and fail on another.</p>
+                    </section>
+
+                    <!-- Section 8 -->
+                    <section id="sec-8" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">8. Generative AI Versus Genuine Learning</h2>
+                        <p>The distinction between task performance and learning has become one of the defining problems in AI-supported education.</p>
+                        <p>Consider a student asked to write a report.</p>
+                        <p>Without AI, the student must research the topic, organize evidence, formulate arguments, write paragraphs, and revise the result.</p>
+                        <p>With a generative AI system, the student can potentially obtain a polished report within minutes.</p>
+                        <p>The second student may perform better on the immediate task while learning substantially less.</p>
+                        <p>This issue is becoming increasingly important because AI removes some of the cognitive effort that traditionally generated learning.</p>
+                        <p>Therefore, a well-designed educational AI should not always maximize convenience.</p>
+                        <p>It might instead:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>ask the student to attempt a problem;</li>
+                            <li>identify the misconception;</li>
+                            <li>offer a hint;</li>
+                            <li>ask the student to explain their reasoning;</li>
+                            <li>provide another problem;</li>
+                            <li>reveal the solution only when appropriate;</li>
+                            <li>and test whether the learner can perform the task independently.</li>
+                        </ul>
+                        <p>A system that does everything for the learner may become a productivity system rather than a learning system.</p>
+                        <p>The distinction should be central to AI evaluation.</p>
+                    </section>
+
+                    <!-- Section 9 -->
+                    <section id="sec-9" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">9. Learner-State-Aware AI</h2>
+                        <p>One of the most interesting directions in 2026 is the integration of generative AI with explicit learner-state information.</p>
+                        <p>An ordinary chatbot can see the current prompt.</p>
+                        <p>A more advanced educational architecture can potentially know:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>which concepts the student has mastered;</li>
+                            <li>which errors have occurred repeatedly;</li>
+                            <li>what material has already been studied;</li>
+                            <li>what learning objective is currently active;</li>
+                            <li>how much scaffolding has already been provided;</li>
+                            <li>and what level of difficulty is appropriate.</li>
+                        </ul>
+                        <p>This enables a shift from:</p>
+                        <p class="italic">"Answer the student's question."</p>
+                        <p>to:</p>
+                        <p class="italic">"Determine what intervention is educationally appropriate for this learner at this point."</p>
+                        <p>A notable August 2026 study by Adenuga compared a prompt-only algebra tutor with a learner-state-aware retrieval-augmented-generation system. Both used Gemini 2.5 Flash as the foundation model.</p>
+                        <p>The RAG system combined a curated algebra corpus, learner-state variables, and a pedagogical response policy. Across 24 two-turn algebra episodes, eight expert reviewers evaluated the systems. The learner-aware RAG tutor achieved higher mean ratings for conceptual support (4.69 vs. 4.31), instructional quality (4.61 vs. 4.29), and instructional helpfulness (4.65 vs. 4.39). The pedagogical composite was 4.65 vs. 4.33, with p = .00024 and a rank-biserial correlation of r = .86.</p>
+                        <p>However, the study also found a serious limitation.</p>
+                        <p>Unsupported-content flags occurred in 13 of 192 rating cells for the RAG system compared with 1 of 192 for the baseline system.</p>
+                        <p>More importantly, no students participated and no learning outcomes were measured. The authors explicitly state that the study does not establish classroom efficacy or learning gains.</p>
+                        <p>This distinction is crucial.</p>
+                        <p>The system generated better-rated tutoring dialogue.</p>
+                        <p>That is evidence of better instructional output quality.</p>
+                        <p>It is not evidence that students learned more.</p>
+                    </section>
+
+                    <!-- Section 10 -->
+                    <section id="sec-10" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">10. Why Retrieval-Augmented Generation Matters</h2>
+                        <p>Large language models are probabilistic generators.</p>
+                        <p>Their fluency does not guarantee factual accuracy.</p>
+                        <p>In education, this creates an especially serious problem.</p>
+                        <p>Suppose a student asks an AI tutor to explain a mathematical theorem.</p>
+                        <p>If the explanation is incorrect but presented confidently, the student may learn a misconception.</p>
+                        <p>Retrieval-augmented generation can reduce part of this problem by grounding the system in selected sources.</p>
+                        <p>A pedagogical RAG tutor can potentially retrieve:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>approved textbook material;</li>
+                            <li>course notes;</li>
+                            <li>curriculum standards;</li>
+                            <li>teacher-authored examples;</li>
+                            <li>verified knowledge bases;</li>
+                            <li>and previously established learner information.</li>
+                        </ul>
+                        <p>The ideal architecture therefore becomes:</p>
+                        <p class="pl-4 border-l-2 border-indigo-500 font-sans text-base text-slate-600 dark:text-slate-400">Foundation model + verified knowledge + learner model + pedagogical policy + assessment loop</p>
+                        <p>rather than:</p>
+                        <p class="pl-4 border-l-2 border-indigo-500 font-sans text-base text-slate-600 dark:text-slate-400">foundation model alone.</p>
+                        <p>The August 2026 Adenuga study provides preliminary evidence that combining a prompt-only algebra tutor with a learner-state-aware retrieval-augmented-generation system. Both used Gemini 2.5 Flash as their foundation model.</p>
+                        <p>The RAG system combined a curated algebra corpus, learner-state variables, and a pedagogical response policy. Eight expert reviewers assessed its output across 24 two-turn algebra episodes. The learner-aware RAG tutor received higher mean ratings for conceptual support (4.69 vs. 4.31), instructional quality (4.61 vs. 4.29), and instructional helpfulness (4.65 vs. 4.39). The pedagogical composite was 4.65 vs. 4.33 (p = .00024, r = .86).</p>
+                        <p>However, the study also identified a major limitation.</p>
+                        <p>Unsupported-content flags occurred in 13 of 192 rating cells for the RAG system vs. 1 of 192 for the baseline system.</p>
+                        <p>More importantly, there was no engagement with student participants or learning outcomes. The authors explicitly state that it does not establish classroom efficacy or learning gains.</p>
+                        <p>While the system generated better-rated tutoring dialogue (evidence of better instructional output), it is not evidence that students learned more.</p>
+                        <p>Large language models are probabilistic generators.</p>
+                        <p>Their fluent output does not guarantee factual accuracy, which presents a special challenge in education.</p>
+                        <p>If a student asks an AI tutor to explain a mathematical theorem, an incorrect explanation that is presented as confidently can lead to the student learning a misconception.</p>
+                        <p>Retrieval-augmented generation can partially mitigate this issue by grounding the system in a selected set of sources.</p>
+                        <p>A pedagogical RAG tutor can potentially retrieve:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>approved textbook material;</li>
+                            <li>course notes;</li>
+                            <li>curriculum standards;</li>
+                            <li>teacher-authored examples;</li>
+                            <li>verified knowledge bases;</li>
+                            <li>and previously established learner information.</li>
+                        </ul>
+                        <p>The ideal architecture becomes:</p>
+                        <p class="pl-4 border-l-2 border-indigo-500 font-sans text-base text-slate-600 dark:text-slate-400">Foundation model + verified knowledge + learner model + pedagogical policy + assessment loop</p>
+                        <p>rather than:</p>
+                        <p class="pl-4 border-l-2 border-indigo-500 font-sans text-base text-slate-600 dark:text-slate-400">foundation model alone.</p>
+                        <p>The August 2026 Adenuga study provides preliminary evidence that combining retrieval with learner-state information can improve expert judgments of pedagogical quality, but its unsupported-content findings also demonstrate that grounding systems do not automatically eliminate hallucination or evidence-boundary problems.</p>
+                    </section>
+
+                    <!-- Section 11 -->
+                    <section id="sec-11" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">11. Mathematics Education</h2>
+                        <p>Mathematics is one of the most suitable domains for adaptive AI due to its strongly hierarchical nature.</p>
+                        <p>Students typically need prerequisite competencies to master more advanced concepts.</p>
+                        <p>For example:</p>
+                        <p class="pl-4 border-l-2 border-indigo-500 font-sans text-base text-slate-600 dark:text-slate-400">Arithmetic → fractions → algebraic manipulation → equations → functions → calculus</p>
+                        <p>A learner model can theoretically identify where the knowledge chain breaks.</p>
+                        <p>A 2026 systematic review by Molemane, Mosia, and Egara examined AI-based tutoring and assessment systems in mathematics. Their review screened 1,749 records, assessed 76 full-text articles, and included 12 studies in a final synthesis. Due to heterogeneous interventions, populations, and outcomes, the researchers used a narrative rather than a quantitative synthesis.</p>
+                        <p>The review concluded that AI tutoring and adaptive systems generally showed improvements in mathematics achievement, particularly in lower-performing learners, but emphasized that effects varied by implementation fidelity, learner characteristics, and instructional context. It also highlighted that evidence regarding direct achievement gains from generative AI tools such as ChatGPT remained limited.</p>
+                        <p>This again supports a broader finding:</p>
+                        <p>Traditional adaptive tutoring appears more established in education than unrestricted generative AI.</p>
+                    </section>
+
+                    <!-- Section 12 -->
+                    <section id="sec-12" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">12. STEM Education</h2>
+                        <p>STEM education is another major area of AI adoption.</p>
+                        <p>AI can potentially:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>generate practice problems;</li>
+                            <li>simulate experiments;</li>
+                            <li>explain mathematical concepts;</li>
+                            <li>provide programming assistance;</li>
+                            <li>analyze scientific data;</li>
+                            <li>support engineering design;</li>
+                            <li>and provide individualized feedback.</li>
+                        </ul>
+                        <p>The June 2026 meta-analysis of AI-supported STEM instruction reported g = 0.67 overall. The authors found the strongest effects at the high-school level, although there were no statistically significant differences by discipline. Longer interventions were not consistently associated with progressively larger effects.</p>
+                        <p>The August 2026 generative-AI meta-analysis provides an essential qualification.</p>
+                        <p>Its I² = 96.32% indicates enormous variation between study results. The prediction interval extending from a substantially negative effect to a very large positive effect means that the average effect is not a reliable description of what any particular intervention will produce.</p>
+                        <p>Consequently, AI in STEM should be evaluated using detailed intervention design rather than using broad technological labels.</p>
+                    </section>
+
+                    <!-- Section 13 -->
+                    <section id="sec-13" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">13. Personalized Learning Does Not Mean Perfect Learning</h2>
+                        <p>There is a tendency to assume that personalization automatically improves education.</p>
+                        <p>The logic seems intuitive:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>different students have different needs;</li>
+                            <li>AI identifies those needs;</li>
+                            <li>AI provides individualized instruction;</li>
+                            <li>therefore learning improves.</li>
+                        </ul>
+                        <p>However, all the steps are suspect.</p>
+                        <p>The learner model can be wrong.</p>
+                        <p>The diagnostic test can be poorly designed.</p>
+                        <p>The content recommendation can be inappropriate.</p>
+                        <p>The generated explanation can be inaccurate.</p>
+                        <p>The system can overestimate or underestimate ability.</p>
+                        <p>The adaptation algorithm can optimize short-term performance rather than long-term understanding.</p>
+                        <p>The 2026 primary-mathematics experiment illustrates this problem clearly: task-difficulty adaptation by itself did not produce any measurable additional benefits.</p>
+                        <p>Thus, personalization is a means, not an outcome.</p>
+                    </section>
+
+                    <!-- Section 14 -->
+                    <section id="sec-14" class="space-y-6">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">14. Advantages of Adaptive AI</h2>
+                        <p>When properly designed, AI-supported adaptive learning can provide several important advantages.</p>
+                        <div class="space-y-3 pl-4 border-l-2 border-indigo-500">
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Continuous individualization</h3>
+                                <p>Unlike a conventional lesson, an AI system can potentially update its estimate of a learner after every interaction.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Immediate feedback</h3>
+                                <p>Students can receive responses immediately rather than waiting for teacher grading.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Large-scale tutoring</h3>
+                                <p>A single system can interact with many learners simultaneously.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Early identification of difficulty</h3>
+                                <p>Patterns of repeated errors may be detected earlier than with periodic exams.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Flexible explanations</h3>
+                                <p>Generative AI can potentially explain the same concept using multiple representations.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Accessibility</h3>
+                                <p>AI can generate alternative explanations, speech, text transformations, etc.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Teacher support</h3>
+                                <p>AI may identify patterns requiring teacher attention, allowing teachers to focus on students who need human intervention.</p>
+                            </div>
+                        </div>
+                        <p>These advantages make AI especially promising in environments where teacher attention is limited.</p>
+                        <p>But they remain only potential advantages.</p>
+                    </section>
+
+                    <!-- Section 15 -->
+                    <section id="sec-15" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">15. The Teacher-AI Relationship</h2>
+                        <p>The most realistic 2026 educational model is not teacher replacement, but teacher augmentation.</p>
+                        <p>A teacher can use AI to identify that:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>five students are struggling with the same prerequisite concept;</li>
+                            <li>one student is progressing unusually quickly;</li>
+                            <li>another has stopped participating;</li>
+                            <li>several students are repeatedly requesting identical hints;</li>
+                            <li>and a particular exercise is generating unusually high error rates.</li>
+                        </ul>
+                        <p>The AI detects patterns.</p>
+                        <p>The teacher interprets them.</p>
+                        <p>This distinction is crucial, because educational situations possess contextual information that may not be visible in the digital records.</p>
+                        <p>A student's performance may deteriorate because of:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>fatigue;</li>
+                            <li>family circumstances;</li>
+                            <li>anxiety;</li>
+                            <li>motivation;</li>
+                            <li>misunderstanding of instructions;</li>
+                            <li>language difficulties;</li>
+                            <li>or problems that are unrelated to academic ability.</li>
+                        </ul>
+                        <p>An algorithm sees data.</p>
+                        <p>A teacher sees a person.</p>
+                        <p>UNESCO's 2024 teacher competency framework reflects this changing relationship by emphasizing AI-related competencies in addition to the continued role of teachers in educational judgment and practice.</p>
+                        <p>Therefore, the strongest long-term architecture is likely:</p>
+                        <p>AI handles scale and personalization; teachers handle context, judgment, mentorship, and responsibility.</p>
+                    </section>
+
+                    <!-- Section 16 -->
+                    <section id="sec-16" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">16. Privacy and Student Data</h2>
+                        <p>Adaptive learning requires information.</p>
+                        <p>The better the learner model can become, the more information it may need.</p>
+                        <p>This presents an uncomfortable tension.</p>
+                        <p>Educational personalization benefits from data, while students have legitimate interests in privacy.</p>
+                        <p>Potentially collected information can include:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>assessment results;</li>
+                            <li>interaction histories;</li>
+                            <li>response times;</li>
+                            <li>mistakes;</li>
+                            <li>writing;</li>
+                            <li>interests;</li>
+                            <li>learning patterns;</li>
+                            <li>behavioral information;</li>
+                            <li>and records of AI conversations.</li>
+                        </ul>
+                        <p>Children require particular protection.</p>
+                        <p>UNICEF's guidance on AI and children emphasizes requirements including: safety, privacy, non-discrimination, transparency, accountability, inclusion, and the best interests of children.</p>
+                        <p>An ethical adaptive system should therefore adhere to principles such as:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>data minimization — collect only what is needed;</li>
+                            <li>purpose limitation — use educational data for defined educational purposes;</li>
+                            <li>transparency — explain what is collected and why;</li>
+                            <li>security — protect student records;</li>
+                            <li>human oversight — avoid fully automated high-impact decisions.</li>
+                        </ul>
+                        <p>The existence of technical capability does not create an ethical justification for unlimited data collection.</p>
+                    </section>
+
+                    <!-- Section 17 -->
+                    <section id="sec-17" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">17. Algorithmic Bias</h2>
+                        <p>An adaptive-learning system is only as fair as its data, assumptions, and evaluation.</p>
+                        <p>If a model is mainly trained on learners who speak one language or come from one environment, its predictions may be less accurate for other learners.</p>
+                        <p>Bias can appear in:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>datasets;</li>
+                            <li>assessments;</li>
+                            <li>language models;</li>
+                            <li>learner models;</li>
+                            <li>recommendation algorithms;</li>
+                            <li>and definitions of "successful" learning.</li>
+                        </ul>
+                        <p>The problem is particularly significant because adaptive systems can influence the opportunities students receive.</p>
+                        <p>If an algorithm repeatedly predicts that a learner is weak, it can continue to assign easier material, which can create a feedback loop:</p>
+                        <p class="pl-4 border-l-2 border-indigo-500 font-sans text-base text-slate-600 dark:text-slate-400">prediction → lower expectations → easier instruction → fewer advanced opportunities → lower performance</p>
+                        <p>The system can then interpret the lower performance as proof that its prediction was correct.</p>
+                        <p>Therefore, adaptive algorithms require regular auditing.</p>
+                    </section>
+
+                    <!-- Section 18 -->
+                    <section id="sec-18" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">18. Academic Integrity</h2>
+                        <p>Generative AI has transformed academic integrity in a way that previous digital tools could not, because modern models can produce complete academic artifacts.</p>
+                        <p>Students can ask AI systems to generate:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>essays;</li>
+                            <li>programming assignments;</li>
+                            <li>mathematical solutions;</li>
+                            <li>laboratory reports;</li>
+                            <li>summaries;</li>
+                            <li>presentations;</li>
+                            <li>and study materials.</li>
+                        </ul>
+                        <p>The OECD's 2026 Digital Education Outlook reports that 72% of lower-secondary teachers surveyed through TALIS 2024 believed AI could jeopardize academic integrity by allowing students to present AI-generated work as their own. It also reports that 37% of lower-secondary teachers used AI for their work in 2024.</p>
+                        <p>The educational response should not be an attempt to detect AI text.</p>
+                        <p>Assessment can evolve.</p>
+                        <p>Teachers can increasingly evaluate:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>reasoning;</li>
+                            <li>oral explanation;</li>
+                            <li>drafts;</li>
+                            <li>iterative work;</li>
+                            <li>problem-solving processes;</li>
+                            <li>practical demonstrations;</li>
+                            <li>and independent transfer tasks.</li>
+                        </ul>
+                        <p>The purpose of assessment is to establish what the learner can do.</p>
+                        <p>If AI completes the entire intellectual task, traditional assessment may measure the wrong thing.</p>
+                    </section>
+
+                    <!-- Section 19 -->
+                    <section id="sec-19" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">19. The Risk of Dependency</h2>
+                        <p>A personalized AI tutor could unintentionally reduce learner independence.</p>
+                        <p>Consider two potential students.</p>
+                        <p>Student A uses AI to obtain every answer.</p>
+                        <p>Student B uses AI to receive hints, explanations, and feedback while solving problems independently.</p>
+                        <p>Both may obtain excellent immediate results.</p>
+                        <p>However, Student B is developing greater independent competence.</p>
+                        <p>This presents a design principle:</p>
+                        <p>The best educational AI may occasionally need to slow learning in order to deepen learning.</p>
+                        <p>The system should therefore measure whether the student can progressively operate without assistance.</p>
+                        <p>This could be called graduated autonomy.</p>
+                        <p><strong>Early in a learning sequence:</strong> high support.</p>
+                        <p><strong>Middle stage:</strong> moderate support.</p>
+                        <p><strong>Advanced stage:</strong> minimal support.</p>
+                        <p><strong>Final test:</strong> independent performance.</p>
+                        <p>Such a framework makes the student's eventual independence an explicit design goal.</p>
+                    </section>
+
+                    <!-- Section 20 -->
+                    <section id="sec-20" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">20. Engagement Is Not the Same as Learning</h2>
+                        <p>Educational technology developers often focus on engagement.</p>
+                        <p>Students may spend a longer time interacting with an AI tutor than with a textbook. They may report that the system is enjoyable. They may ask more questions.</p>
+                        <p>These are valuable indicators, but they are not equivalent to learning.</p>
+                        <p>A student could be highly engaged with an educational application and still remember little.</p>
+                        <p>The 2026 self-regulated-learning RCT illustrates this. Meaningful GenAI interaction was associated with sustained interest in exploratory analysis, but the intervention did not produce statistically significant advantages in domain-specific knowledge.</p>
+                        <p>Consequently, serious research should distinguish:<br>
+                        engagement<br>
+                        from<br>
+                        learning<br>
+                        from<br>
+                        retention<br>
+                        from<br>
+                        transfer<br>
+                        from<br>
+                        independent competence.</p>
+                    </section>
+
+                    <!-- Section 21 -->
+                    <section id="sec-21" class="space-y-6">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">21. Evaluating Adaptive AI Properly</h2>
+                        <p>A robust evaluation framework should measure multiple dimensions.</p>
+                        <div class="space-y-3 pl-4 border-l-2 border-indigo-500">
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Immediate achievement</h3>
+                                <p>Can students solve the problems presented during the intervention?</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Delayed retention</h3>
+                                <p>Can students solve similar problems later?</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Transfer</h3>
+                                <p>Can they apply the knowledge to unfamiliar situations?</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Independence</h3>
+                                <p>Can they succeed without AI assistance?</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Metacognition</h3>
+                                <p>Do they understand their own strengths and weaknesses?</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Motivation</h3>
+                                <p>Does the intervention improve meaningful willingness to learn?</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Equity</h3>
+                                <p>Does it work similarly across learner groups?</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Reliability</h3>
+                                <p>Does the system provide consistently correct guidance?</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Safety</h3>
+                                <p>Does the system avoid harmful or inappropriate outputs?</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Teacher workload</h3>
+                                <p>Does AI actually reduce burdens or simply create new administrative work?</p>
+                            </div>
+                        </div>
+                        <p>An AI tutor should therefore not be evaluated solely by benchmark accuracy.</p>
+                        <p>It should be evaluated by learner outcomes.</p>
+                    </section>
+
+                    <!-- Section 22 -->
+                    <section id="sec-22" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">22. Cost and Scalability</h2>
+                        <p>One of the strongest arguments for AI tutoring is that human one-to-one tutoring is difficult to scale.</p>
+                        <p>A capable AI tutor can potentially interact with many learners simultaneously, which can change the economics of personalization.</p>
+                        <p>A school could theoretically provide individualized practice to hundreds or thousands of students without hiring one private tutor per student.</p>
+                        <p>However, scalability presents another challenge.</p>
+                        <p>Poor instruction can also be scaled.</p>
+                        <p>A flawed AI tutor could provide the wrong explanation to thousands of students simultaneously.</p>
+                        <p>Therefore, scalability increases both benefit and potential harm.</p>
+                        <p>The quality-control problem becomes more important, not less.</p>
+                    </section>
+
+                    <!-- Section 23 -->
+                    <section id="sec-23" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">23. AI Literacy</h2>
+                        <p>As AI becomes part of learning itself, students need to understand AI.</p>
+                        <p>UNESCO's AI Competency Framework for Students identifies competencies involving human-centered thinking, AI ethics, AI techniques and applications, and AI system design, organized across the progression levels of understanding, applying, and creating.</p>
+                        <p>Students should learn that:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>AI systems can be wrong;</li>
+                            <li>AI can produce convincing misinformation;</li>
+                            <li>AI has limitations;</li>
+                            <li>AI may reflect biases;</li>
+                            <li>AI is not automatically authoritative;</li>
+                            <li>and AI should be checked against evidence.</li>
+                        </ul>
+                        <p>This is especially important in adaptive education.</p>
+                        <p>If students view an AI tutor as infallible, personalization could increase the credibility of incorrect information.</p>
+                        <p>AI literacy therefore becomes a prerequisite for responsible AI-supported learning.</p>
+                    </section>
+
+                    <!-- Section 24 -->
+                    <section id="sec-24" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">24. The Digital Divide</h2>
+                        <p>An advanced adaptive platform is useless to a student who cannot reliably access it.</p>
+                        <p>The digital divide encompasses more than internet connectivity.</p>
+                        <p>It also includes:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>device quality;</li>
+                            <li>software availability;</li>
+                            <li>paid subscriptions;</li>
+                            <li>digital literacy;</li>
+                            <li>teacher expertise;</li>
+                            <li>home learning conditions;</li>
+                            <li>and accessible educational content.</li>
+                        </ul>
+                        <p>The 2026 literature highlights unequal access as one of the persistent challenges surrounding AI-enabled personalized education.</p>
+                        <p>There is therefore a risk that AI could produce two educational systems.</p>
+                        <p>One group of students receives highly personalized intelligent tutoring; another receives a minimum of digital support.</p>
+                        <p>If this occurs, AI could worsen existing educational inequalities rather than reduce them.</p>
+                    </section>
+
+                    <!-- Section 25 -->
+                    <section id="sec-25" class="space-y-6">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">25. The Future Technical Architecture</h2>
+                        <p>A mature adaptive-learning platform could contain several interconnected layers.</p>
+                        <div class="space-y-3 pl-4 border-l-2 border-indigo-500">
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Layer 1: Foundation model</h3>
+                                <p>Responsible for natural-language interaction and multimodal reasoning.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Layer 2: Domain knowledge base</h3>
+                                <p>Contains verified educational material.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Layer 3: Learner model</h3>
+                                <p>Estimates knowledge, misconceptions, progress, and support requirements.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Layer 4: Curriculum graph</h3>
+                                <p>Represents prerequisites among concepts.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Layer 5: Pedagogical policy</h3>
+                                <p>Determines when to:</p>
+                                <ul class="list-disc pl-6 space-y-1">
+                                    <li>explain;</li>
+                                    <li>question;</li>
+                                    <li>give hints;</li>
+                                    <li>assess;</li>
+                                    <li>review;</li>
+                                    <li>or advance.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Layer 6: Memory</h3>
+                                <p>Stores relevant learning history.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Layer 7: Verification</h3>
+                                <p>Checks generated explanations and answers.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">Layer 8: Teacher interface</h3>
+                                <p>Allows educators to inspect important patterns and intervene.</p>
+                            </div>
+                        </div>
+                        <p>This is a much more sophisticated architecture than simply placing ChatGPT inside an educational platform.</p>
+                    </section>
+
+                    <!-- Section 26 -->
+                    <section id="sec-26" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">26. Toward Agentic Education</h2>
+                        <p>The next generation of educational AI may become more agentic.</p>
+                        <p>Instead of waiting for a student to ask a question, the system could potentially:</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>monitor progress;</li>
+                            <li>identify learning gaps;</li>
+                            <li>schedule review;</li>
+                            <li>create practice tasks;</li>
+                            <li>evaluate responses;</li>
+                            <li>modify the learning path;</li>
+                            <li>report patterns to teachers;</li>
+                            <li>and optimize instruction.</li>
+                        </ul>
+                        <p>However, autonomy raises additional questions.</p>
+                        <p>Who determines the objective?</p>
+                        <p>What constitutes educational success?</p>
+                        <p>How does the system handle uncertainty?</p>
+                        <p>When should it stop adapting?</p>
+                        <p>What happens if the AI model disagrees with a teacher?</p>
+                        <p>Should an algorithm be able to decide that a student should repeat a course?</p>
+                        <p>These are not mere engineering problems.</p>
+                        <p>They are governance problems.</p>
+                        <p>Human decision-making should remain central to high-impact educational decisions.</p>
+                    </section>
+
+                    <!-- Section 27 -->
+                    <section id="sec-27" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">27. Why Some AI Educational Research Produces Conflicting Results</h2>
+                        <p>At a glance, the literature seems contradictory.</p>
+                        <p>One meta-analysis reports a large positive effect.</p>
+                        <p>Another reports a positive effect in STEM.</p>
+                        <p>Another finds no benefit from simple task-difficulty adaptation.</p>
+                        <p>Another finds no improvement in domain knowledge from an AI-supported self-regulation intervention.</p>
+                        <p>Another reports improved expert ratings for an AI tutor but does not measure learning.</p>
+                        <p>Another finds that a positive generative-AI effect may largely reflect publication bias.</p>
+                        <p>These findings are not necessarily contradictory.</p>
+                        <p>They are measuring different things.</p>
+                        <p>The most useful explanation is that AI in education is not a single intervention.</p>
+                        <p>A well-engineereded intelligent tutor is different from ChatGPT used casually.</p>
+                        <p>A learner-state-aware RAG tutor is different from a prompt-only chatbot.</p>
+                        <p>A system adapting misconceptions is different from a system adjusting question difficulty.</p>
+                        <p>An AI used to provide hints is different from an AI that completes homework.</p>
+                        <p>A six-session secondary-school intervention is different from a year-long adaptive mathematics platform.</p>
+                        <p>Therefore, future research needs more precise classifications of intervention design.</p>
+                    </section>
+
+                    <!-- Section 28 -->
+                    <section id="sec-28" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">28. A More Rigorous Model of Educational AI</h2>
+                        <p>A useful conceptual model can be expressed as:</p>
+                        <p class="pl-4 border-l-2 border-indigo-500 font-sans text-base text-slate-600 dark:text-slate-400">Educational impact = AI capability × pedagogical design × learner engagement × implementation quality</p>
+                        <p>If any component is weak, overall benefit can decrease.</p>
+                        <p>A powerful AI with poor pedagogy may produce little educational value.</p>
+                        <p>Excellent pedagogy with unreliable AI may also fail.</p>
+                        <p>A good system with students who outsource all cognition may increase task completion but not learning.</p>
+                        <p>And a technically excellent intervention implemented poorly in classrooms may produce weak results.</p>
+                        <p>Therefore, technological capability is only one variable.</p>
+                    </section>
+
+                    <!-- Section 29 -->
+                    <section id="sec-29" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">29. Recommendations for Future Research</h2>
+                        <p>Future AI-in-education research should address several areas.</p>
+                        <p>First, studies need larger and more diverse samples.</p>
+                        <p>Second, researchers should conduct longer interventions, since short experiments may not capture retention or dependency.</p>
+                        <p>Third, studies should measure independent performance after AI assistance is removed.</p>
+                        <p>Fourth, interventions should specifically report what adaptation the AI system performed.</p>
+                        <p>Fifth, research should distinguish generative AI from adaptive tutoring rather than grouping all AI together.</p>
+                        <p>Sixth, researchers should preregister experiments and replicate promising findings.</p>
+                        <p>Seventh, negative results should be published as readily as positive results.</p>
+                        <p>The August 2026 generative-AI meta-analysis demonstrates why this is important. Publication bias can make a technology seem more effective when positive findings are more likely to enter the published literature.</p>
+                    </section>
+
+                    <!-- Section 30 -->
+                    <section id="sec-30" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">30. Conclusion</h2>
+                        <p>Artificial intelligence is becoming one of the most important technologies in the history of educational technology.</p>
+                        <p>The most transformative possibility is not simply automated content generation.</p>
+                        <p>It is adaptive intelligence.</p>
+                        <p>An AI system can potentially observe how a learner is progressing, estimate what the learner understands, detect misconceptions, change the sequence of instruction, generate explanations, provide feedback, and coordinate learning activities continuously.</p>
+                        <p>This capability could address one of education's oldest structural problems: the tension between mass education and individual learning.</p>
+                        <p>But the research available in 2026 strongly argues against simplistic conclusions.</p>
+                        <p>AI interventions often produce positive average effects, but those averages mask enormous variation.</p>
+                        <p>The September 2026 meta-analysis found large average achievement effects across 215 independent effect sizes, while emphasizing substantial variation by educational and implementation conditions.</p>
+                        <p>The June 2026 STEM meta-analysis found a positive effect of g = 0.67, supporting the educational potential of AI-supported instruction.</p>
+                        <p>At the same time, the August 2026 generative-AI meta-analysis revealed I² = 96.32%, a prediction interval from -1.52 to 3.20, and evidence that publication bias could largely explain its positive overall effect.</p>
+                        <p>Adaptive learning itself also requires caution.</p>
+                        <p>The 2026 randomized field experiment with 132 second-grade students found that task-difficulty adaptation alone did not improve learning outcomes compared with a non-adaptive system.</p>
+                        <p>This suggests that the future of adaptive education will not be decided by whether a system It will depend on what the system adapts and why.</p>
+                        <p>Likewise, generative AI should not be judged by how impressive its explanations look.</p>
+                        <p>The 2026 RAG tutor study demonstrated higher expert ratings for conceptual support and instructional quality, but also more unsupported-content flags and, critically, no measurement of student learning.</p>
+                        <p>The 2026 self-regulated-learning RCT produced another nuanced outcome: GenAI support improved some motivational indicators but did not significantly improve domain-specific knowledge, effort, or elaboration-based strategies over standard ChatGPT.</p>
+                        <p>Together, these findings point toward a more mature understanding of AI in education.</p>
+                        <p>The important question is not:</p>
+                        <p class="italic">"Can AI teach?"</p>
+                        <p>It clearly can perform some teaching functions.</p>
+                        <p>The important question is:</p>
+                        <p class="italic">"Can AI reliably produce durable, transferable, independent human learning?"</p>
+                        <p>That remains an empirical question.</p>
+                        <p>The most promising educational architecture is therefore unlikely to be an AI that simply provides answers.</p>
+                        <p>It will be an AI that knows when not to provide the answer.</p>
+                        <p>It will recognize when a student needs a hint instead of a solution, a prerequisite instead of a harder question, a challenge instead of reassurance, or human intervention instead of another automated response.</p>
+                        <p>In the most mature model, AI will provide scale, continuous assessment, personalization, and immediate feedback.</p>
+                        <p>Teachers will provide judgment, context, mentorship, human relationships, and responsibility.</p>
+                        <p>Students will remain the central objective.</p>
+                        <p>The measure of success will not be how intelligent the educational AI appears.</p>
+                        <p>It will be whether the human learner becomes more knowledgeable, more capable, more independent, and better able to learn without the machine.</p>
+                        <p>That is the standard by which AI-powered adaptive learning should ultimately be judged.</p>
+                    </section>
+
+                    <!-- References -->
+                    <section id="references" class="space-y-4 pt-6 border-t-2 border-slate-200 dark:border-slate-800">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-slate-900 dark:text-slate-100">References</h2>
+                        <ol class="list-decimal pl-6 space-y-2 text-sm text-slate-600 dark:text-slate-400 font-sans">
+                            <li>Adenuga, J. A. (2026). Retrieval-augmented generation for pedagogically aware educational AI: An expert-rated comparison of a prompt-only LLM tutor and an integrated, learner-state-aware RAG tutor. Frontiers in Education, 11. https://doi.org/10.3389/feduc.2026.1896839.</li>
+                            <li>Boolzen, C., Kuhn, J., Flegr, S., Rott, E.-M., Stausberg, N., & Küchemann, S. (2026). Evidence of impact and interpretational limits of generative AI in STEM education: A systematic review and meta-analysis on cognitive learning outcomes. Artificial Intelligence Review. Published August 25, 2026. https://doi.org/10.1007/s10462-026-11665-9.</li>
+                            <li>Doğan, Y., Kılıç, Z., Kalınkara, Y., & Talan, T. (2026). The Impact of Artificial Intelligence-Supported Instruction on Student Learning in STEM: A Systematic Review and Meta-Analysis. Journal of Intelligence, 14(6), 109. https://doi.org/10.3390/jintelligence14060109.</li>
+                            <li>Fütterer, T., Bardach, L., Kuhn, J., Keller, S. D., Gerjets, P., et al. (2026). Enhancing School Students' Self-Regulated Learning through Generative AI Support: A Randomized Controlled Trial. Educational Psychology Review, 38, 42. https://doi.org/10.1007/s10648-026-10133-8.</li>
+                            <li>Hariyanto, H., Kristianingsih, F. X. D., & Maharani, R. (2025). Artificial intelligence in adaptive education: A systematic review of techniques for personalized learning. Discover Education, 4, 458. https://doi.org/10.1007/s44217-025-00908-6.</li>
+                            <li>Ikram, M., Hanefar, S. B. M., Saleem, S. M. U., & Zulfiqar, F. (2026). Artificial intelligence in education: A systematic review of personalized learning trends and future directions. Frontiers in Education, 11, 1782626. https://doi.org/10.3389/feduc.2026.1782626.</li>
+                            <li>Ma, W., Adesope, O. O., Nesbit, J. C., & Liu, Q. (2014). Intelligent tutoring systems and learning outcomes: A meta-analysis. Journal of Educational Psychology, 106(4), 901-918. https://doi.org/10.1037/a0037123.</li>
+                            <li>Molemane, N., Mosia, M., & Egara, F. O. (2026). Effectiveness of AI-based tutoring and assessment systems in mathematics education: A systematic review. Discover Education. https://doi.org/10.1007/s44217-026-01872-5.</li>
+                            <li>Sun, S., & Cheng, Z. (2026). AI-Driven Adaptive Education Systems: A Comprehensive Review of Concepts, Models, and Future Possibilities. Computer Applications in Engineering Education, 34(4), e70215. https://doi.org/10.1002/cae.70215.</li>
+                            <li>Wang, X., Huang, R. T., Sommer, M., Pei, B., Shidfar, P., Rehman, M. S., Ritzhaupt, A. D., Martin, F., et al. (2024). The efficacy of artificial intelligence-enabled adaptive learning systems from 2010 to 2022 on learner outcomes: A meta-analysis. Journal of Educational Computing Research, 62(6). https://doi.org/10.1177/07356331241240459.</li>
+                            <li>OECD. (2026). OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education. OECD Publishing.</li>
+                            <li>UNESCO. (2024). AI Competency Framework for Teachers. UNESCO.</li>
+                            <li>UNESCO. (2024). AI Competency Framework for Students. UNESCO.</li>
+                            <li>UNESCO. (2021). Recommendation on the Ethics of Artificial Intelligence. UNESCO.</li>
+                            <li>UNICEF. (2025). Guidance on AI and Children, Version 3.0. UNICEF Innocenti.</li>
+                            <li>U.S. Department of Education, Office of Educational Technology. (2023). Artificial Intelligence and the Future of Teaching and Learning: Insights and Recommendations.</li>
+                        </ol>
+                    </section>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mt-20 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Sahlan Hasan Research. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Script
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // BibTeX Toggle
+        function toggleBibtex() {
+            const modal = document.getElementById('bibtexModal');
+            modal.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
