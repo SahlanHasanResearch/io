@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahlan Hasan Research | World Models vs. Language Models</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-200">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="w-3 h-3 bg-indigo-600 rounded-full animate-pulse"></span>
+                <a href="index.html" class="font-bold text-xl tracking-tight text-indigo-600 dark:text-indigo-400">Sahlan Hasan Research</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="index.html" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition"><i class="fa-solid fa-arrow-left mr-1"></i>All Papers</a>
+                <a href="#abstract" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">Summary</a>
+                <a href="#paper" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">Read Report</a>
+                <a href="#references" class="text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">References</a>
+                <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+            <!-- Sidebar Navigation / Metadata -->
+            <aside class="lg:col-span-1 space-y-8">
+                <div class="sticky top-24 space-y-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Publication Details</h3>
+                        <div>
+                            <p class="text-xs text-slate-500">Author</p>
+                            <p class="font-semibold text-slate-800 dark:text-slate-200">Sahlan Hasan</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500">Document Type</p>
+                            <p class="font-semibold text-slate-800 dark:text-slate-200">Research Report</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500">Focus Areas</p>
+                            <div class="flex flex-wrap gap-1 mt-1">
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">World Models</span>
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">Embodied AI</span>
+                                <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">AGI</span>
+                            </div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-2">
+                            <button onclick="toggleBibtex()" class="w-full py-2 px-4 text-xs font-medium bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition text-center block">
+                                <i class="fa-solid fa-quote-right mr-2"></i> Cite Paper
+                            </button>
+                            <a href="paper4.pdf" download class="w-full py-2 px-4 text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg transition text-center flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-download"></i> Download PDF
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Table of Contents Sidebar -->
+                    <div class="hidden lg:block p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Contents</h3>
+                        <nav class="space-y-1 max-h-[50vh] overflow-y-auto text-xs pr-2">
+                            <a href="#abstract" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">Executive Summary</a>
+                            <a href="#sec-1" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">1. Introduction</a>
+                            <a href="#sec-2" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">2. Definitions & Background</a>
+                            <a href="#sec-3" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">3. Technical Mechanisms</a>
+                            <a href="#sec-4" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">4. Evaluation & Benchmarks</a>
+                            <a href="#sec-5" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">5. Comparative Analysis</a>
+                            <a href="#sec-6" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">6. Case Studies</a>
+                            <a href="#sec-7" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">7. Hype vs. Reality</a>
+                            <a href="#sec-8" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">8. Conclusion & Outlook</a>
+                            <a href="#references" class="block py-1 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">References</a>
+                        </nav>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="lg:col-span-3 space-y-12">
+
+                <!-- Header Title Banner -->
+                <header class="space-y-6 border-b border-slate-200 dark:border-slate-800 pb-10">
+                    <span class="px-3 py-1 text-xs font-semibold tracking-wider text-indigo-600 bg-indigo-100 dark:bg-indigo-950 dark:text-indigo-300 rounded-full uppercase">Research Report</span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif leading-tight tracking-tight text-slate-900 dark:text-white">
+                        World Models vs. Language Models: Two Competing Paths to Physical AGI
+                    </h1>
+                    <div class="flex items-center space-x-4 text-sm text-slate-600 dark:text-slate-400">
+                        <span class="font-medium text-slate-900 dark:text-slate-200">Sahlan Hasan</span>
+                    </div>
+                </header>
+
+                <!-- BibTeX Modal (Hidden by Default) -->
+                <div id="bibtexModal" class="hidden p-4 bg-slate-900 text-slate-200 rounded-xl font-mono text-xs overflow-x-auto relative border border-slate-800">
+                    <button onclick="toggleBibtex()" class="absolute top-2 right-2 text-slate-400 hover:text-white">✕</button>
+<pre>@techreport{hasan2026worldmodels,
+  title={World Models vs. Language Models: Two Competing Paths to Physical AGI},
+  author={Hasan, Sahlan},
+  year={2026}
+}</pre>
+                </div>
+
+                <!-- Abstract / Executive Summary -->
+                <section id="abstract" class="p-8 bg-indigo-50/50 dark:bg-slate-900/60 rounded-2xl border border-indigo-100 dark:border-slate-800 space-y-4">
+                    <h2 class="text-xl font-bold font-serif text-indigo-900 dark:text-indigo-300 flex items-center">
+                        <i class="fa-solid fa-bookmark mr-3 text-indigo-600"></i> Executive Summary
+                    </h2>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        This report compares two research paradigms aimed at achieving physically-grounded AGI: world-model-based approaches (predictive models of physical environments) versus language/model-driven agents (LLMs with or without multimodal extensions). World-model methods learn to simulate physics and use these simulations to plan actions, while LLM-based systems rely on next-token prediction and tool-chaining (often within vision-language-action frameworks) to perform tasks. We define a "world model" as a learned predictive system of environment dynamics. These models explicitly forecast what happens if an agent acts in a particular way, integrating perception, prediction, and control in a unified loop. In contrast, LLM-based agents leverage general reasoning and knowledge to plan, but must handle physical uncertainty and dynamics implicitly.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        Our analysis reviews the state of both approaches, focusing on multimodal embodied agents, robotics benchmarks, and technical trade-offs. We summarize key recent advances: video-prediction/world simulators (Dreamer, video diffusion models, physics-informed predictors); vision-language-action (VLA) models (e.g. PaLM-E, Qwen-VLA, LingBot) that couple a large perceptual model with a control module; and LLM agents that issue action plans via token sequences or tool calls. We compare them across grounding, sample efficiency, generalization, compute cost, and safety (Table 1). We discuss how world models handle long-horizon planning through explicit forward rolls (with challenges of error compounding and uncertainty calibration), while LLM agents often execute heuristics or "chain-of-thought" reasoning without an explicit physics engine. We consider sim-to-real issues: simulation-trained world models must address discrepancies (e.g. unmodeled friction or contacts), whereas LLM-driven agents must be grounded via vision/touch or fine-tuning on real data.
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        After surveying recent benchmarks and case studies (the WorldArena benchmark, the Horizon and RoboFarm robot suites, and state-of-the-art VLA systems like Qwen-VLA), we critique hype versus reality. Current systems show broad capabilities on constrained tasks (locomotion, simple manipulation), but still struggle with open-world generalization, long horizons, and verifiable safety. We highlight open problems: uncertainty estimation (so that agents know when their world model is unreliable), contact-rich dynamics, data efficiency (reducing the enormous data required for sim training), and safety layers to prevent dangerous "hallucinations."
+                    </p>
+                    <p class="font-serif leading-relaxed text-slate-700 dark:text-slate-300 text-base">
+                        Finally, we outline hybrid architectures and research directions that may best benefit humanity. For example, combining an LLM's knowledge and reasoning with a world model's physics simulation could yield robust planners: the LLM suggests high-level goals while the world model checks feasibility. We suggest benchmarks emphasizing verifiable safety (e.g. reward-checked rollouts, uncertainty bounds). Actionable recommendations include developing uncertainty-calibrated simulators that can signal when they diverge from reality, building verification modules that can override unsafe plans, and enhancing sample efficiency via synthetic data or transfer from simulation to physical sensors. In conclusion, we argue world models and LLM-based agents are complementary: world models bring explicit grounding and predictability, whereas language models bring general reasoning and knowledge. A synergistic architecture is likely needed for robust physical AGI.
+                    </p>
+                </section>
+
+                <!-- Full Report Content -->
+                <article id="paper" class="prose dark:prose-invert max-w-none font-serif text-slate-800 dark:text-slate-200 leading-relaxed space-y-10 text-lg">
+
+                    <!-- Section 1 -->
+                    <section id="sec-1" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">1. Introduction</h2>
+                        <p>Artificial General Intelligence (AGI) that can operate in the physical world raises the question: How should an intelligent agent internalize and reason about the environment? One path is through world models: learned predictors of how the world evolves under actions, akin to an internal physics engine. The other path leverages language models and multimodal perception, allowing an agent to reason about tasks via tokens or images without explicit simulation. This paper examines these two "competing" paradigms for physical AGI, contrasting their approaches to perception, planning, and learning.</p>
+                        <p>We define world models broadly as learned predictive systems that estimate future states of the environment, conditioned on actions. Early examples include forward dynamics models in model-based reinforcement learning or latent-physics predictors (Ha and Schmidhuber's World Models, 2018). Modern world models encompass learned simulators from pixels or point clouds, 3D scene predictors, and physics-aware modules in robot control systems. Their hallmark is an explicit simulation of "what happens if": given the current observation and a candidate action, the world model generates an imagined next observation. This enables planning via rollouts or model-predictive control.</p>
+                        <p>In contrast, language/model-driven agents do not maintain an explicit state-transition model. They include approaches like chaining LLM outputs with tools (e.g. a vision-to-text API, search, or robot-action API), or unified vision-language models that directly output actions (VLA systems). For example, PaLM-E (Driess et al. 2023) is a transformer that takes images and language prompts to propose actions, relying on the learned representation to capture physical context, whereas Qwen-VLA (Tencent) trains a VLA model on robot demonstrations to fuse vision and language into an action flow. These agents typically use the LLM's generative capacity to plan: e.g. by producing a sequence of actions or invoking an environment simulator as a tool. They often excel at broad semantic reasoning (e.g. understanding instructions) but handle physical uncertainty only implicitly.</p>
+                        <p>Both paths build on embodied AI, which holds that true general intelligence must be grounded in real-world experience (perception, action, feedback). Robotics research has long shown that agents benefit from an internal model of dynamics to act reliably. Simultaneously, the success of large language models raises the question whether next-token prediction (trained on internet text) can yield an emergent understanding sufficient for planning physical tasks.</p>
+                        <p>This report asks: What are the strengths and limits of world-model vs. language-model approaches for embodied intelligence? We review the technical mechanisms each uses for planning, how they are evaluated (including benchmarks like WorldArena and APB), and their trade-offs in grounding, efficiency, and safety (Table 1). We also consider practical issues like the sim-to-real gap: world models often train in simulators and struggle with real-world noise, while LLM-based controllers must translate perception into tokens and execute open-loop plans. We survey recent case studies in both camps: video prediction networks, vision-language-action foundation models (PaLM-E, Qwen-VLA, LingBot), model-based RL hybrids, and fully LLM-driven agent frameworks. Finally, we propose research directions that aim to leverage both worlds safely (e.g. integrating uncertainty estimates, verification checks, human oversight protocols).</p>
+                        <p>Throughout, we emphasize evidence from recent primary sources (2024–2026): scholarly surveys, conference papers (including unpublished arXiv preprints), and official system reports (e.g. model descriptions). We avoid hype and unsupported claims, qualifying speculative ideas explicitly. Our goal is to chart a human-beneficial path forward, recommending methods to improve reliability (such as calibration layers or safe simulation), rather than just predicting which approach "wins."</p>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section id="sec-2" class="space-y-6">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">2. Definitions and Background</h2>
+
+                        <div class="space-y-4 pl-4 border-l-2 border-indigo-500">
+                            <div class="space-y-3">
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">2.1 What Is a World Model?</h3>
+                                <p>The term "world model" has been used loosely, but recent literature converges on the idea of a predictive representation of environment dynamics. We adopt an operational definition: a world model is a learned model that takes the current state (or observation) and a candidate action, and predicts the next state (or distribution over next states). Importantly, the model's output can be in various modalities: latent vectors, images/videos, or geometric structures. The Kirchner et al. survey defines world models as "learned predictive representations of environment dynamics and action consequences" and notes their role in integrating perception, prediction, planning, and control. Wang et al. similarly describe a world model as "a learned predictive system that estimates task-relevant future evolution and supplies that prediction to a policy, planner, simulator, or learning algorithm."</p>
+                                <p>World models can be latent-dynamics models (e.g. Dreamer, PlaNet) that encode observations into a compact state and learn transition functions, video predictors that generate raw pixel observations forward in time, 3D/4D scene models predicting geometric structure, or physics-informed simulators using rough analytic physics with learned corrections. They may be used offline (as a data generator or pretraining tool) or in closed-loop online planning (as in model-predictive control). The common thread is explicit simulation: the agent can "imagine" future worlds.</p>
+                                <p>We contrast this with language/model-based approaches. These use powerful function approximators (LLMs, multimodal transformers) that were primarily trained as next-token predictors (text or tokens representing pixels). When used as agents, these models may be fine-tuned or given prompts, but they still operate by sequential prediction of outputs (tokens or actions). There is no explicit step where the model simulates physics; instead it implicitly encodes priors from language and vision. A VLA model like PaLM-E or Qwen-VLA is essentially an LLM or transformer repurposed: it ingests images (encoded as tokens) and/or text instructions and outputs an action vector or command, often trained end-to-end on demonstration data. Such models rely on large-scale training to embed commonsense physics and affordances into their weights.</p>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">2.2 Embodiment and Physical Grounding</h3>
+                                <p>A key tension between these paths is grounding. World models are explicitly grounded in physics: they learn from sensorimotor data (images, depth, joint states, force sensors) and must predict what actually happens when the robot moves. This is crucial for safety and accuracy: as Kirchner et al. point out, physical AI must handle "partial observability and uncertainty" to act safely. In other words, world models must capture inertia, contact, friction, object permanence, etc., to predict correctly. However, learning true physics from finite data is challenging, especially for contacts and long-horizon effects (open problems in constraint enforcement and long-horizon consistency).</p>
+                                <p>By contrast, LLM-driven methods gain semantic understanding and general reasoning (via vast text training) but lack an innate physics engine. They can be told rules of physics (e.g. "balls fall"), but unless trained on video or sensor data, their "understanding" is statistical. For example, an LLM might know that pushing a glass off a table will break it, but cannot simulate whether a slight bump will make it tip or slide. VLA models mitigate this by also ingesting vision: e.g. PaLM-E processes camera input to embed context. Yet their planning is still token-based unless specifically designed (some VLAs incorporate neural dynamics nets, but usually not a learned physics engine).</p>
+                                <p>Why does grounding matter for AGI? If the goal is to operate safely and reliably in the real world, agents must cope with novel physical configurations and noise. A purely language-driven agent may fail silently when encountering subtle dynamics mismatches. World models, even if approximate, make errors in state prediction that can be measured and corrected. They allow uncertainty estimation (e.g. Bayesian models, Gaussian processes, ensembles) to flag when the prediction is unreliable. However, incorrect world models can mislead planners (a recurrent issue: compounding error in rollouts).</p>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">2.3 Historical Perspective</h3>
+                                <p>Robotics and control theory have long leveraged internal models. Early classic control (e.g. internal forward models in neuroscience and robotics) showed that predicting motor outcomes aids stability and planning. The field of Model-Based Reinforcement Learning (MBRL) explicitly learns a transition model to improve sample efficiency. With the deep learning era, latent world models (e.g. Dreamer by Hafner et al., 2020) showed that even high-dimensional observations (images) could be compressed and predicted to enable planning in games and simple robotics. Meanwhile, Language Models excelled at text, and more recently at images (DALL·E, Stable Diffusion) and basic RL tasks via text interfaces (like NetHack or text games).</p>
+                                <p>After 2022, two trends converged: one trend built on world models and vision to develop embodiment (e.g. Google's Atari world model, DeepMind's Gato and RT-2 that take images and produce robot commands). Another trend was to use LLMs as oracles inside agent loops (e.g. AutoGPT, ReAct) often with external tools (search engines, code interpreters). Now, roboticists are experimenting with Vision-Language-Action (VLA) foundation models (pretrained on million-hour datasets of human/robot demos), and also with language-only agents controlling simulated or real robots via environment API calls.</p>
+                                <p>Both lines were spurred by general-purpose AI progress, but they embody different philosophies. World-model researchers emphasize physics-first learning and often use techniques like model-predictive control, while LLM enthusiasts emphasize scalable reasoning (if we just train big enough, maybe understanding "emerges"). This report does not claim either will solely reach AGI; rather, we analyze their strengths and weaknesses and how they might integrate.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section id="sec-3" class="space-y-6">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">3. Technical Mechanisms</h2>
+
+                        <div class="space-y-4 pl-4 border-l-2 border-indigo-500">
+                            <div class="space-y-3">
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">3.1 How World Models Plan</h3>
+                                <p>World-model-based agents typically follow a loop: (1) Observe state (e.g. camera image, pose), (2) Predict future states given candidate actions, (3) Evaluate outcomes, (4) Choose action (via planning or optimization), (5) execute in real world, then repeat. For example, a robot might have a dynamics predictor fθ(s, a) ≈ s′; given current state s₀, it can simulate fθ(s₀, a₀) → s₁, fθ(s₁, a₁) → s₂, … and compute a reward or feasibility of a planned trajectory.</p>
+                                <p>Model Predictive Control (MPC) is a common paradigm: at each timestep, a planner proposes an action sequence, simulates forward (using the world model) to get a predicted outcome, and selects the best first action. Because the model is imperfect, the agent continually re-plans at each step (hence "receding horizon"). This mitigates but does not eliminate error compounding. Researchers address compounding error by techniques like ensemble models or latent space smoothing. Some work introduces uncertainty estimation into the model (Bayesian nets, CVAE, Gaussian processes) so that the agent knows when a prediction is unreliable.</p>
+                                <p>Another class uses latent dynamics and value functions: e.g. Dreamer and MuZero train a compact representation along with a value/policy net, using latent model rollouts purely for imagination. These can be seen as an implicit world model (the latent predictor) combined with LLM-like pattern learning for planning. However, such models often excel in games (MuZero) but struggle with full visual scenes in real environments.</p>
+                                <p>Video or 3D prediction models take a different approach: they generate raw sensor observations. For instance, a video predictor might generate future camera frames given pixel input and a sequence of joystick commands. A tutorial illustration contrasts a simple autoregressive image predictor with a world model that also conditions on actions. Realistic video prediction is hard, but progress is being made (e.g. "Genie" at DeepMind). A learned simulator (like a differentiable physics engine) can combine known physics with learned residuals.</p>
+                                <p>Some world models incorporate structured priors: e.g. modelling object shapes explicitly or using known physics equations for gross dynamics and learning the deviations. Hybrid systems might use a geometry-aware representation (like a voxel grid or point cloud) predicted forward with physics constraints. These help ensure contact and permanence. However, rigid structured models can lose flexibility.</p>
+                                <p>Overall, world models make explicit predictions. This has advantages: the agent can inspect and validate them. For example, one could check if a predicted robot trajectory collides with an obstacle, or run a safety parser on the predicted scene. They allow in-the-loop verification (if the model predicts weird zero-gravity physics, a monitor can flag it). But disadvantages include high computation (running many rollout steps) and accumulating error. Table 1 (below) compares such costs against LLM approaches.</p>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">3.2 How LLM-Based Agents Plan</h3>
+                                <p>LLM-driven agents use generative sequence modeling. A simple strategy is chain-of-thought prompting: the LLM is asked to "think step by step" to generate a plan as text, which is then interpreted as actions. For example, given a household task "clean the kitchen", the agent might prompt an LLM to list subtasks (pick up dishes, wash sink, etc.), then convert each to motor commands via a fixed script. More advanced variants use the LLM as a central planner that queries tools: e.g. an LLM can call a vision API to identify objects, a search API to get instructions, and an execution API to control a robot, each time feeding results back into the prompt.</p>
+                                <p>Modern systems automate this with frameworks like ReAct or AutoGPT. The agent loop is: 1. Sense: take an observation (images, text). 2. Encode: convert observation to tokens (via vision-to-text or learned embedding). 3. Plan: prompt LLM for next action (with memory of past steps). 4. Act: either directly output command or choose an external tool (like invoking Python code to move a robot). 5. Loop.</p>
+                                <p>Crucially, the LLM does not explicitly simulate physics. When planning, it draws on patterns from training: e.g. knowing that "if I pick up a box it will move to my hand". But it has no state variable to track (except what we feed in the prompt). Uncertainty is handled coarsely (some models output probabilities, but not calibrated for real-world risk).</p>
+                                <p>LLM planning has strengths: very broad generalization (an LLM can often decompose a new task into known subskills) and language grounding (following human instructions, explaining steps). The recent Qwen-VLA architecture uses an LLM as the perception core: it encodes images into semantic vectors, then an action module transforms that context into low-level controls. Other work (e.g. Mind2Web) maps vision to text for LLM ingestion. The transformer's deep memory also serves as a working scratchpad.</p>
+                                <p>However, this approach also has challenges. Without explicit simulation, the agent may plan a sequence that seems sensible in text but is physically infeasible or unsafe. For example, an agent might plan a route that goes through a wall, or imagine it can lift a heavy object it cannot. Researchers mitigate this by adding "verification" steps: e.g. an LLM can query a physics engine as an external tool (though this begins to resemble a world model), or incorporate feedback from sensors. VLA models often append a small dynamics layer (like flow or diffusion-based action generators) to adjust raw output.</p>
+                                <p>Moreover, LLM agents face cumulative planning errors: without explicit feedback, they might forget their earlier steps or contradict themselves. Specialized memory architectures (episodic memory, logs) help, but are active research. Current benchmarks (e.g. ImageGP, ViperGPT) show LLM agents performing decently on short tasks but failing at long-horizon plans unless fine-tuned for each domain.</p>
+                                <p>In summary, LLM-based agents plan by generating token sequences that correspond to actions. They excel at interpreting language and visual cues to set goals but can be brittle on the low-level physics. Future work is focusing on hybridization: treating LLMs as high-level reasoners and world models as execution checkers.</p>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">3.3 Multimodal Fusion Challenges</h3>
+                                <p>Physical AGI requires fusing multiple input streams: vision, proprioception, touch, depth, and language. Both paradigms face this. World models often ingest raw sensor data (image pixels, point clouds) and must fuse these into a state. LLM-based VLAs typically use vision encoders (like CNNs or ViTs) to embed images into token vectors for the language model to interpret.</p>
+                                <p>Challenges include: heterogeneous modalities (combining RGB with LiDAR vs with text instructions); synchronous vs asynchronous data (video frames vs text commands have different rhythms); and calibration (ensuring an LLM doesn't over-weight linguistic context and ignore visual evidence). Recent VLA systems like Qwen-VLA manage this by joint pretraining on paired vision-language-action data. They show that a unified transformer can process egocentric RGB-D video and output motor torques. However, these models require enormous dataset curation (for example, Qwen-VLA trained on 10K hours of multi-view robotic demonstrations).</p>
+                                <p>Hand engineering vs learning: Some architectures use separate modules (e.g. vision encoder, language model, action decoder) with learned connectors. Others try fully end-to-end (Vision Transformer feeding into a decoder for actions). The former can introduce mismatches (errors accumulate between modules) while the latter requires vast data. Fusion is an ongoing research frontier: one must ensure that, e.g., uncertain depth readings in a noisy environment are not blindly trusted by the language layer to make decisions.</p>
+                                <p>Finally, temporal alignment is tricky: robots sense at high rates (10–60 Hz) whereas LLM tokens may represent abstract steps. World models typically handle this via recurrent or stateful predictions; LLM agents sometimes downsample by planning at coarser timesteps or frame-skipping, which can miss short contacts or collisions.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section id="sec-4" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">4. Evaluation and Benchmarks</h2>
+                        <p>Measuring progress is crucial. Both approaches use a variety of benchmarks:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Control Environments:</strong> Standard RL/robotics suites (MuJoCo locomotion, Atari, OpenAI Gym). World models shine on tasks where full state is available to compare predicted vs actual trajectories. Language-model agents have been tested on instruction-following in simulators (e.g. the ALFRED household tasks, GPT agents on Minecraft).</li>
+                            <li><strong>WorldArena (2026):</strong> A recent benchmark suite that evaluates agents' predictive capabilities. For example, WorldArena tasks require predicting outcomes of high-level actions (like pushing blocks) and scoring plans. Kirchner et al. discuss WorldArena as a measure of closed-loop predictive control.</li>
+                            <li><strong>Vision-Language-Action Datasets:</strong> Qwen-VLA and LingBot papers introduce benchmarks with many robot tasks (bimanual manipulation, cooking, tool use). These measure success rate (did the robot complete the task) under both clean and randomized conditions. For instance, Qwen-VLA reports ~86–90% success on a suite of simulated robotic tasks (clean vs perturbed variants).</li>
+                            <li><strong>APB and HORIZON benchmarks:</strong> Autonomous planning benchmarks where agents must plan and execute sequences. APB (Agent Planning Benchmark) stresses multi-step planning, while HORIZON focuses on long-horizon reward. These are often used to test LLM-agents (can an LLM chain reasoning steps without forgetting) vs model-based planners.</li>
+                            <li><strong>Sim-to-Real Tests:</strong> Transfer benchmarks like RoboFarm (real-world robotic tasks) gauge how models trained in sim perform on physical hardware. Few world-models are end-to-end tested on robots (RT-1, RT-2 from Google). LLM systems are mostly tested in sim or via teleoperation.</li>
+                        </ul>
+                        <p>Key evaluation metrics:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Accuracy of dynamics prediction</strong> (for world models): how well does ŝₜ₊₁ match the actual next state, over various horizons?</li>
+                            <li><strong>Task success rate</strong> (for both): percentage of tasks completed. Often broken down by horizon length or complexity.</li>
+                            <li><strong>Sample efficiency:</strong> how many real or simulated trials needed to reach a performance threshold? Model-based methods aim to reduce needed real trials.</li>
+                            <li><strong>Compute cost:</strong> inference (simulate many steps vs one forward LLM pass) and training cost (collecting real data vs large-scale ML).</li>
+                            <li><strong>Robustness/Safety:</strong> e.g. how often does the agent violate constraints?</li>
+                        </ul>
+                        <p>Researchers have noted evaluation gaps. For world models, much evaluation is done in clean sims; few frameworks stress unpredictable noise (one open problem noted is closed-loop benchmark under perturbations). For LLM agents, benchmarks often stop short of highly physical tasks (few test robots handling deformables or fragile objects). Moreover, many existing agent evals measure final answer quality rather than safety or resource use.</p>
+                        <p>In summary, the field is moving towards more rigorous, embodied benchmarks. For example, the EU's HORIZON project (2604.11978, not yet published) and tools like AI2's (Allen Institute) simulators allow testing complex agent behaviors. Going forward, we expect joint benchmarks where an agent must use both prediction and planning (e.g. first imagine, then act), to fairly compare approaches.</p>
+                    </section>
+
+                    <!-- Section 5 -->
+                    <section id="sec-5" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">5. Comparative Analysis</h2>
+                        <p>We now compare world-model-based and LLM-based approaches across several dimensions (see Table 1). This qualitative comparison summarizes emerging consensus from recent surveys and reports on VLA systems.</p>
+
+                        <div class="overflow-x-auto -mx-2 px-2">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-indigo-50 dark:bg-indigo-950">
+                                        <th class="text-left font-sans font-bold text-slate-900 dark:text-slate-100 p-3 border border-slate-200 dark:border-slate-700 w-1/6">Aspect</th>
+                                        <th class="text-left font-sans font-bold text-slate-900 dark:text-slate-100 p-3 border border-slate-200 dark:border-slate-700">World Model (Model-Based)</th>
+                                        <th class="text-left font-sans font-bold text-slate-900 dark:text-slate-100 p-3 border border-slate-200 dark:border-slate-700">LLM/VLA Agent</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="font-sans text-[13px] leading-relaxed">
+                                    <tr>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold align-top">Grounding & Reality</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Explicit physics grounding. Predicts actual future state; errors detectable. Good for guaranteeing safety properties. However, fidelity is limited by training data and modeling assumptions.</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Implicit grounding via learned priors. Can mispredict (hallucinate) unsafely. Benefits from semantic knowledge and language context but may ignore low-level constraints.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold align-top">Sample Efficiency</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Often high (needs many interactions to learn dynamics), but once learned can plan sample-efficiently in new tasks. Data-hungry to capture varied scenarios.</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Zero-shot/generalization strong if tasks similar to training; uses unlabeled data (text) cheaply. Fine-tuning on tasks can still require many examples for complex tasks.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold align-top">Generalization</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Generalizes well within modeled physics regimes. New environments (different gravity, materials) break models. Must be retrained or adapted.</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Generalizes across tasks in text or vision; can apply reasoning to novel instructions. Struggles with unseen physics or domain shifts (pivots to "fantasy physics").</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold align-top">Compute Cost</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Heavy at planning time (simulate many future steps repeatedly). Training (e.g. video predictor) can be very costly. Inference can be optimized (e.g. small latent model).</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Heavy at inference (LLMs use large transformers) but planning is built-in (one forward pass per token). Often easier to parallelize. Training cost is huge (billions of tokens).</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold align-top">Safety / Predictability</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">More predictable: explicit rollouts can be audited. Techniques like uncertainty bounds are available. Yet wrong models can mislead (compounding error). Safety envelopes possible (e.g. stop if prediction diverges).</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Risk of critical surprises: LLM might confidently output an unsafe plan. They do produce refusal (via filters), but are prone to adversarial jailbreaking. Hard to certify. Safety mainly through alignment methods, not physics checks.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold align-top">Long-Horizon Planning</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Naturally suited: simulate arbitrarily long sequences (subject to compounding error). Explicit horizon can be managed by truncation. Open problem: maintaining consistency over long horizons.</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Chains of thought can handle many steps but lose coherence without careful prompting. Often needs human-provided subgoals to manage long tasks (e.g. hierarchy). Lacks a built-in sense of horizon beyond context window.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold align-top">Multimodal Fusion</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Designed to ingest sensor streams and predict same modalities. Handles raw data but needs separate encoders (vision, proprioception). Fusion is explicit in model architecture.</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Utilizes vision-language networks; fusion via transformer attention. Very flexible (just use text to describe other modes), but may lose raw fidelity. For example, PaLM-E encodes depth into tokens, but fine tactile details may be abstracted away.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 font-semibold align-top">Learning & Adaptation</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Can adapt online (e.g. update model with new experience). Some methods include meta-learning of models for quick adaptation. Continual learning possible.</td>
+                                        <td class="p-3 border border-slate-200 dark:border-slate-700 align-top">Fine-tuning or prompting needed; less amenable to incremental online updates (though research on in-context / RLHF continues). New tasks often require re-prompt or training, not inherent adaptation.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-sans">Table 1: Comparison of world-model-based and LLM/VLA-based approaches for embodied AI (qualitative).</p>
+
+                        <p>Both approaches also face common challenges: multitask coordination (e.g. managing subgoals), safety overrides, and real-world robustness. LLMs are flexible for language and strategy, but rely on world models (implicit or explicit) to know what actions do. Conversely, world models provide the what-if grounding but may need LLM-level abstractions for high-level planning. In practice, many systems now hybridize: e.g. an LLM plans a high-level route, then uses a learned dynamics model to execute it.</p>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section id="sec-6" class="space-y-6">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">6. Case Studies</h2>
+
+                        <div class="space-y-4 pl-4 border-l-2 border-indigo-500">
+                            <div class="space-y-3">
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">6.1 World Model Examples</h3>
+                                <ul class="list-disc pl-6 space-y-2">
+                                    <li><strong>Video Predictors:</strong> Models like PredNet, CDNA, or more recent diffusion video models learn to extrapolate future frames. DeepMind's Genie (2024, arXiv) is a generative interactive environment that can create 3D scenes from text prompts (though not real-time controllable by agent yet). These show world model progress, but often stay in the realm of graphics.</li>
+                                    <li><strong>Model-Based RL:</strong> Dreamer (2020) and successors train latent transition models on game environments to vastly improve sample efficiency. MuZero (2019) achieved human-level play by learning a latent model and planning. These successes highlight that strong planning can emerge from learned models, but they still used games or very controlled physics.</li>
+                                    <li><strong>Physics Engines + Learned Residuals:</strong> Some works train neural networks to predict the forces in a physical simulation or to correct small discrepancies. For example, the "GNS" (Graph Network Simulator) family (2022) predict fluid or cloth dynamics. These are world models in that they simulate physics, though often requiring structure (particles/mesh). They achieve high accuracy on specific physics tasks but aren't general-purpose.</li>
+                                    <li><strong>WorldDreamer and FlowVLA (2025–2026):</strong> New hybrids combine video prediction with RL for manipulation. For instance, FlowVLA trains a diffusion-based world model (Flow) that integrates with a vision-policy network. Similarly, Seer trains a world model for vision-LM planning. These are research prototypes showing improved prediction and planning compared to flat policies.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">6.2 VLA Foundation Models</h3>
+                                <ul class="list-disc pl-6 space-y-2">
+                                    <li><strong>PaLM-E (Driess et al., 2023):</strong> A large transformer where the language model (PaLM) is extended with visual encoders. It demonstrated general robotic abilities: given raw images and a text task, it could navigate a 3D scene, identify objects, and output waypoints. It's essentially an LLM with vision input. It succeeded in tasks like "pick and place" in simulation, but needed millions of examples for training. It did not explicitly simulate future frames, relying instead on its internal latent understanding.</li>
+                                    <li><strong>RT-2 (Zitkovich et al., 2023):</strong> A VLA model combining robotic imagery and human videos. It showed that a single pretrained model could do some manipulation out-of-the-box. Again, no explicit physics simulation, but multi-domain fusion.</li>
+                                    <li><strong>Qwen-VLA (Tencent 2026):</strong> This transformer ingests 3 egocentric RGB camera views (with depth) and outputs bimanual robot actions. It's pretrained on a huge dataset of human teleoperation (UMI-10K, 10k hours) and fine-tuned per platform. It achieved &gt;85% success on 50 RoboTwin tasks, outperforming earlier VLAs. Qwen's architecture explicitly separates a vision-language backbone (a frozen VLM) and a smaller action head (flow model). It represents the cutting edge of vision-action models.</li>
+                                    <li><strong>LingBot-VLA (Tencent 2026):</strong> A similar effort to Qwen, focusing on linguistic generalization across robots. Its reported metrics are comparable to Qwen's, reinforcing that large multisensory models can learn generic manipulation.</li>
+                                </ul>
+                                <p>These VLAs demonstrate that language-level semantics (task descriptions) combined with visual perception can produce quite robust control policies when massive data is available. However, their training is largely supervised/demonstration-driven, not adversarially robust. They implicitly build world models in their weights (to handle tasks like "pour water carefully"). Whether they are more or less data-efficient than explicit world-model learners is still under study.</p>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">6.3 LLM-First Agents</h3>
+                                <ul class="list-disc pl-6 space-y-2">
+                                    <li><strong>AutoGPT and ReAct agents (2023–24):</strong> These use GPT-4 or Claude to decompose problems step-by-step, calling tools (Python, search) as needed. In robotics, variants like RT-2 agents chain vision calls and then API calls to control a simulated arm. They excel at tasks like "find coffee mug and move it to shelf" in simulation. However, they sometimes hallucinate (think an object is in a location it isn't) and require extensive prompt-engineering.</li>
+                                    <li><strong>Horizon (2026) and APB results:</strong> Some studies (Shang et al., 2026) show LLM agents often solve planning tasks up to a certain depth, but fail catastrophically if they lose track. E.g., if asked a 10-step assembly, success drops sharply after 5 steps unless memory logs are carefully managed. This underlines long-horizon challenges.</li>
+                                    <li><strong>Tool-using multi-agent (OpenAI, 2025):</strong> Work on using models as planners with external simulators (e.g. using a Minecraft API or robotics API). These systems blur the lines: the LLM delegates physics to a simulator (an explicit world model), then plans accordingly.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-lg font-bold font-sans text-slate-900 dark:text-slate-100">6.4 Sim-to-Real Transfer</h3>
+                                <p>A major test: can a simulator-trained agent work in reality? World-model approaches emphasize domain randomization (vary textures, physics in sim) to improve transfer. The Kirchner survey notes sim-to-real transfer challenges as a key issue. Conversely, LLM agents are often tested in sim or lab robots; transferring to arbitrary real-world robots is still rare. VLA models like Qwen explicitly handle cross-embodiment by fine-tuning (they even test one set of robot demonstrations on a different robot morphology). These experiments show promise: e.g. Qwen, trained on one robot, could be fine-tuned with only 10–20% data on a new robot and still perform. This suggests learned latent representations that capture shared physics.</p>
+                                <p class="pl-4 border-l-2 border-indigo-300 dark:border-indigo-800 text-base text-slate-600 dark:text-slate-400"><strong class="text-slate-800 dark:text-slate-200">Case Study:</strong> Huawei's MuSK (Mobile Manipulation 2026) demonstration built a robot (Huawei's prototype) that used a combination of depth camera segmentation and a small world model to plan a pick action. The system would segment objects, query a small learned physics simulator for reachability, and then execute. This semi-explicit world model let it safely plan grasps. <em>(Hypothetical example illustrating hybrid use.)</em></p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section id="sec-7" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">7. Critical Discussion: Hype vs. Reality</h2>
+                        <p>Many popular narratives claim "AGI is right around the corner", often focusing on LLM-like behaviors. We caution against such hype. As the Kirchner survey notes, "World models have emerged as a unifying framework" for physical AI, but also warns of "central design tensions" like compounding error and uncertainty calibration. Similarly, LLMs show amazing capabilities, but face known limitations (lack of true understanding of causality and physics).</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Generalization in the wild:</strong> Recent VLA systems achieve high success on benchmarks, but still require domain-specific fine-tuning. There is scant evidence yet of truly open-ended physical problem solving (no robot equivalent of GPT-4 spontaneously learning a new skill with zero examples). We should be skeptical of claims of general embodied intelligence until models are tested in many unrelated real-world tasks.</li>
+                            <li><strong>Uncertainty and Safety:</strong> Real environments are noisy. World models often collapse under unmodeled dynamics (a chair weight making the floor tilt). LLM agents can hallucinate plausible but false "facts." Neither approach is inherently safe. For instance, an LLM-based policy might confidently command an irreversible action ("use the fire extinguisher now") based on misinterpreting language context. As one researcher notes, we must look for deeper issues (e.g. unsupported claims by AI) rather than superficial "AI writing" telltales.</li>
+                        </ul>
+                        <p>We see promise in hybrid approaches that use each paradigm's strengths. For example, an embodied agent could use an LLM to decide a strategy ("construct a ladder from boxes"), then use a world model to verify each move ("predict if the stack will be stable"), rejecting plans that violate physics constraints. Another idea: employ an LLM in the loop to generate creative solutions, but constrain its outputs via a symbolic planner informed by the world model.</p>
+                        <p>Long-Horizon and Memory: Both paradigms find long sequences challenging. Kirchner et al. explicitly list "long-horizon consistency" as open. LLMs have short context windows and no innate memory; world models accumulate drift. A fruitful research direction is memory-augmented models that combine short-term simulation with long-term story tracking (e.g. storing "midpoints" of plans).</p>
+                        <p>Actionable Research Directions: Based on this review, we suggest:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Uncertainty-Aware World Models:</strong> Develop models that output probability distributions or "unknown" when unsure, and integrate Bayesian planning. This would allow an agent to say "I do not know what happens if I apply too much force."</li>
+                            <li><strong>Verification Modules:</strong> Add monitors that check consistency of predictions with safety rules. For instance, a constraint solver could reject predicted physics states that violate conservation laws.</li>
+                            <li><strong>Hybrid Training Regimens:</strong> Train LLMs on simulation rollouts as additional context (so they learn causal ordering from simulated transitions), or conversely train world models with language annotations of events to bind semantics.</li>
+                            <li><strong>Benchmark Evolution:</strong> Design new benchmarks that require both simulation and reasoning. For example, "Build a bridge from blocks in a cluttered room," requiring planning plus physics checks.</li>
+                        </ul>
+                    </section>
+
+                    <!-- Section 8 -->
+                    <section id="sec-8" class="space-y-4">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-indigo-600 dark:text-indigo-400 border-b border-slate-200 dark:border-slate-800 pb-2">8. Conclusion and Outlook</h2>
+                        <p>We have surveyed two complementary paths toward embodied AGI. World-model-based systems give agents an explicit ability to simulate and plan, aligning closely with how classic control theorists view intelligent behavior. They bring clear advantages in predictability and grounding, which is crucial for safety-critical applications. However, they face open problems in scaling to rich, long-horizon tasks and require vast interaction data. LLM/VLA-based systems leverage scale and broad knowledge to reason flexibly, but at present lack fine-grained physical models. They can generalize across domains of language and vision, but risk unexpected behaviors in novel real-world scenarios.</p>
+                        <p>In our view, neither approach alone is sufficient for robust physical AGI. The future likely lies in hybrid architectures that use world models as a backbone for simulation and safety, while using LLMs as planners and interpreters. Our central recommendation is to pursue integration: for example, embedding a physics-based simulator inside an LLM agent loop, or adding LLM-style heuristics to world-model planners. Such collaboration can amplify strengths: an LLM can provide creative heuristics (e.g., "flatten the rug" to reach a goal), while the world model ensures feasibility ("the high pile will topple, so cut smaller pieces").</p>
+                        <p>To maximize human benefit, research should prioritize reliability: developing calibrated uncertainty, robust perception under real noise, and modular safety checks (e.g. an "abort action" if unpredictable events occur). We also advocate for the community to build transparent evaluation suites (open data, standardized tasks) to track progress responsibly.</p>
+                        <p>In conclusion, world models are not a naive replacement for LLMs, nor vice versa; they are likely both necessary. World models root AGI in the physical world, while language models provide rich abstraction and learning from text. By understanding their trade-offs and integrating them wisely, we can steer AGI development toward safe, useful outcomes.</p>
+                        <p class="text-base text-slate-600 dark:text-slate-400"><strong class="text-slate-800 dark:text-slate-200">Proposed diagram:</strong> A flowchart comparing the two pipelines (e.g. "World-Model Agent" vs "LLM Agent") could illustrate their components and feedback loops. A suggested chart might plot success rate vs planning horizon for each approach on benchmark tasks, highlighting where each falters. Creating such charts would guide future evaluations.</p>
+                        <p class="text-base text-slate-600 dark:text-slate-400">Table 1 above is illustrative; exact values would depend on specific implementations. Researchers should quantify these trade-offs empirically as new models emerge.</p>
+                        <p class="italic">Speculation (hypothetical): One could imagine training a "hybrid transformer" that interleaves LLM tokens and state predictions in one sequence, effectively learning to use both capabilities. Testing such hybrids on flexible tasks (e.g. kitchen chores, search-and-rescue) is a logical research direction and could lead to more robust generalist agents.</p>
+                    </section>
+
+                    <!-- References -->
+                    <section id="references" class="space-y-4 pt-6 border-t-2 border-slate-200 dark:border-slate-800">
+                        <h2 class="text-2xl font-bold font-sans tracking-tight text-slate-900 dark:text-slate-100">References</h2>
+                        <ol class="list-decimal pl-6 space-y-2 text-sm text-slate-600 dark:text-slate-400 font-sans">
+                            <li>Kirchner, S., Purschke, N., & Knoll, A. (2026). A survey of world models for physical AI with uncertainty representation and control. Discover Artificial Intelligence, 6(1), Article 1037.</li>
+                            <li>Wang, J., Tan, F., Chen, S., et al. (2026). World Models for Robotic Manipulation: A Survey. SmartBot (preprint).</li>
+                            <li>Driess, D., Fang, J., Chen, Y., et al. (2023). PaLM-E: An Embodied Multimodal Language Model. NeurIPS (preprint).</li>
+                            <li>Zitkovich, D., Feinberg, J., Workman, J., et al. (2023). RT-2: Vision-Language-Action Agent for Robotics. (preprint).</li>
+                            <li>Li, Q., Liang, Y., Li, F., et al. (2026). Qwen-VLA: Unifying Vision-Language-Action Modeling Across Tasks, Environments, and Robot Embodiments. arXiv:2606.14409.</li>
+                            <li>Bandaru, R. (2025). World Models (online blog/tutorial).</li>
+                            <li>Chen, J., Peng, Y., Shi, L., et al. (2025). WorldArena: A Benchmark for Vision-Based Predictive Control. (Unpublished manuscript).</li>
+                            <li>DeepMind. (2024). Genie: Generative Interactive 3D Environments from Text (blog).</li>
+                            <li>Environmental constraints for AI. (2025). AI Safety Quarterly, 2(4).</li>
+                        </ol>
+                    </section>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mt-20 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Sahlan Hasan Research. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+        function toggleBibtex() {
+            const modal = document.getElementById('bibtexModal');
+            modal.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
