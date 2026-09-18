@@ -47,12 +47,62 @@
             Essays on artificial intelligence, its capabilities, and its consequences.
         </h1>
         <p class="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl font-serif text-lg">
-            A collection of research essays by Sahlan Hasan. Click any title below to open the full paper.
+            Research essays and reports by Sahlan Hasan. Click any title below to open the full paper.
         </p>
     </div>
 
     <!-- Papers List -->
     <main id="papers" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-6">
+
+        <!-- Paper Card 5 (AI Safety / Governance — featured top) -->
+        <a href="paper5.html" class="group block p-8 bg-white dark:bg-slate-900 rounded-2xl border-2 border-indigo-200 dark:border-indigo-800 hover:border-indigo-400 dark:hover:border-indigo-600 hover:shadow-md transition ring-1 ring-indigo-100 dark:ring-indigo-900/50">
+            <div class="flex items-start justify-between gap-6">
+                <div class="flex-1 space-y-3">
+                    <span class="px-3 py-1 text-xs font-semibold tracking-wider text-white bg-indigo-600 rounded-full uppercase">Research Report</span>
+                    <h2 class="text-2xl font-bold font-serif leading-snug text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">
+                        Defending Humanity: Global Governance and Safety Frameworks for High-Risk AI and AGI Systems
+                    </h2>
+                    <p class="font-serif text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
+                        Surveys the technical controls and international policy needed to keep high-risk AI and AGI safe — from red-teaming and model-weight security to the EU AI Act, UN dialogues, and real 2025–2026 incidents like Anthropic's AI-orchestrated cyber-espionage case.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <span class="text-sm font-medium text-slate-900 dark:text-slate-200">Sahlan Hasan</span>
+                        <span class="text-slate-300 dark:text-slate-700">•</span>
+                        <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">AI Governance</span>
+                        <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">AI Safety</span>
+                        <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">AGI Risk</span>
+                    </div>
+                </div>
+                <div class="hidden sm:flex items-center text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform">
+                    <i class="fa-solid fa-arrow-right text-xl"></i>
+                </div>
+            </div>
+        </a>
+
+        <!-- Paper Card 4 (World Models vs Language Models) -->
+        <a href="paper4.html" class="group block p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition">
+            <div class="flex items-start justify-between gap-6">
+                <div class="flex-1 space-y-3">
+                    <span class="px-3 py-1 text-xs font-semibold tracking-wider text-indigo-600 bg-indigo-100 dark:bg-indigo-950 dark:text-indigo-300 rounded-full uppercase">Research Report</span>
+                    <h2 class="text-2xl font-bold font-serif leading-snug text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">
+                        World Models vs. Language Models: Two Competing Paths to Physical AGI
+                    </h2>
+                    <p class="font-serif text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
+                        Compares physics-simulating world models against LLM/vision-language-action agents as routes to embodied AGI, weighing grounding, sample efficiency, and safety — and argues the future is a hybrid of the two.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <span class="text-sm font-medium text-slate-900 dark:text-slate-200">Sahlan Hasan</span>
+                        <span class="text-slate-300 dark:text-slate-700">•</span>
+                        <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">World Models</span>
+                        <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">Embodied AI</span>
+                        <span class="px-2 py-0.5 text-xs rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">AGI</span>
+                    </div>
+                </div>
+                <div class="hidden sm:flex items-center text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform">
+                    <i class="fa-solid fa-arrow-right text-xl"></i>
+                </div>
+            </div>
+        </a>
 
         <!-- Paper Card 1 -->
         <a href="paper1.html" class="group block p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition">
@@ -129,9 +179,10 @@
             </div>
         </a>
 
-        <!-- To add another paper: duplicate one of the <a> cards above, point href at "paper4.html",
-             update the badge/title/summary/tags, and create paper4.html using paper3.html as a template.
-             Also add a matching card + PDF entry to build_pdfs.py so its download button works. -->
+        <!-- To add another paper: duplicate one of the <a> cards above, point href at "paper6.html",
+             update the badge/title/summary/tags, and create paper6.html using paper4.html or paper5.html
+             as a template (Research Report style) or paper1-3.html (Academic Essay style).
+             Also add a matching entry to build_pdfs.py so its download button works. -->
 
     </main>
 
